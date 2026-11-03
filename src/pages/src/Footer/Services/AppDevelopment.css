@@ -1,0 +1,1162 @@
+@import "./_theme.css";
+
+/* ===========================================================
+   APP DEVELOPMENT PAGE - scoped under .appdev-page, every
+   other class starts with "adh-". Colors and fonts come only
+   from the shared studio theme.
+=========================================================== */
+.appdev-page {
+  --adh-bg-alt: var(--color-bg-alt);
+  --adh-surface: var(--color-surface);
+  --adh-ink: var(--color-text);
+  --adh-ink-soft: var(--color-text-muted);
+  --adh-muted: var(--color-text-muted);
+  --adh-accent: var(--color-primary);
+  --adh-accent-2: var(--color-accent);
+  --adh-gold: var(--color-accent-2);
+  --adh-border: var(--color-border);
+  --adh-shadow: var(--color-shadow);
+  --adh-why-c: var(--color-bg);
+  --adh-blue: var(--color-primary);
+  --adh-coral: var(--color-accent);
+  --adh-yellow: var(--color-accent-2);
+
+  position: relative;
+  padding: 0 50px;
+  font-family: var(--font-body);
+  color: var(--adh-ink);
+  overflow-x: clip;
+}
+body.light-mode .appdev-page {
+  --adh-why-c: #ffffff;
+}
+body.dark-mode .appdev-page {
+  --adh-muted: #cec6c6;
+}
+
+.appdev-page *,
+.appdev-page *::before,
+.appdev-page *::after {
+  box-sizing: border-box;
+}
+
+.appdev-page h1,
+.appdev-page h2,
+.appdev-page h3,
+.appdev-page h4 {
+  font-family: var(--font-display);
+  color: var(--adh-ink);
+  margin: 0 0 0.3em;
+  line-height: 1.15;
+}
+.appdev-page h2 {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  letter-spacing: -0.01em;
+}
+.appdev-page h3 {
+  font-size: 0.8rem;
+}
+.appdev-page p {
+  color: var(--adh-ink-soft);
+  line-height: 1.6;
+  margin: 0 0 1em;
+}
+
+.adh-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 64px 100px ;
+}
+
+.adh-eyebrow-text {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  color: var(--adh-accent-2);
+  margin-bottom: 0.6em;
+}
+.adh-section-sub {
+  max-width: 620px;
+  margin-bottom: 2.4em;
+}
+
+/* ===========================================================
+   BUTTONS
+=========================================================== */
+.adh-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.25s ease;
+}
+.adh-btn-primary {
+  background: linear-gradient(160deg, var(--adh-blue), var(--adh-coral));
+  color: #fff;
+}
+.adh-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px var(--adh-shadow);
+}
+.adh-btn-ghost {
+  background: transparent;
+  color: var(--adh-ink);
+  border: 1px solid var(--adh-border);
+}
+.adh-btn-ghost:hover {
+  background: var(--adh-bg-alt);
+  transform: translateY(-3px);
+}
+.adh-btn-block {
+  width: 100%;
+}
+
+/* ===========================================================
+   HERO (left side)
+=========================================================== */
+.adh-hero {
+  padding-top: 72px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.adh-seal-wrap {
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: scale(0.8) rotate(-8deg);
+}
+.is-loaded .adh-seal-wrap {
+  animation: adhSealIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+@keyframes adhSealIn {
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+.adh-seal {
+  width: 96px;
+  height: 96px;
+}
+.adh-seal-svg {
+  width: 100%;
+  height: 100%;
+}
+.adh-seal-ring-outer {
+  fill: none;
+  stroke: var(--adh-gold);
+  stroke-width: 2;
+}
+.adh-seal-ring-inner {
+  fill: none;
+  stroke: var(--adh-accent);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 4;
+}
+.adh-seal-text {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  fill: var(--adh-gold);
+}
+.adh-seal-center {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  fill: var(--adh-accent);
+}
+
+.adh-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--adh-gold);
+  margin-bottom: 6px;
+  opacity: 0;
+}
+.is-loaded .adh-kicker {
+  animation: adhFadeUp 0.7s ease forwards;
+  animation-delay: 0.15s;
+}
+
+.adh-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--adh-accent);
+  border: 1px solid var(--adh-border);
+  background: var(--adh-bg-alt);
+  padding: 5px 12px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+  opacity: 0;
+}
+.is-loaded .adh-eyebrow {
+  animation: adhFadeUp 0.7s ease forwards;
+  animation-delay: 0.25s;
+}
+
+.adh-subtitle {
+  max-width: 58ch;
+  opacity: 0;
+}
+.is-loaded .adh-subtitle {
+  animation: adhFadeUp 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.adh-tagline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--adh-ink);
+  border-left: 3px solid var(--adh-gold);
+  padding-left: 12px;
+  opacity: 0;
+}
+.is-loaded .adh-tagline {
+  animation: adhFadeUp 0.8s ease forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes adhFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.adh-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Animated headline */
+.adh-headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 3.8vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.4em;
+}
+.adh-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: adh-word-in 0.7s var(--ease, ease) forwards;
+}
+.adh-word--a {
+  animation-delay: 0.1s;
+}
+.adh-word--b {
+  animation-delay: 0.2s;
+  background: linear-gradient(100deg, var(--adh-blue), var(--adh-coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.adh-word--d {
+  animation-delay: 0.4s;
+  background: linear-gradient(100deg, var(--adh-coral), var(--adh-yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes adh-word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===========================================================
+   HERO (right side) - mobile app stage
+=========================================================== */
+.adh-hero-visual {
+  min-width: 0;
+}
+
+.adh-stage {
+  position: relative;
+  min-height: 470px;
+  display: grid;
+  place-items: center;
+}
+.adh-stage-glow {
+  position: absolute;
+  inset: 4% 8%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--adh-accent) 22%, transparent),
+    transparent 68%
+  );
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+/* pop-in build */
+.adh-pop {
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+}
+.is-loaded .adh-pop {
+  animation: adhPop 0.6s ease forwards;
+  animation-delay: calc(0.45s + var(--i, 0) * 0.17s);
+}
+@keyframes adhPop {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- the phone ---------- */
+.adh-phone {
+  position: relative;
+  z-index: 2;
+  width: 216px;
+  height: 430px;
+  background: var(--adh-surface);
+  border: 6px solid var(--adh-surface);
+  border-radius: 34px;
+  box-shadow:
+    0 0 0 1px var(--adh-border),
+    0 26px 54px var(--adh-shadow);
+}
+.adh-phone-notch {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 46px;
+  height: 6px;
+  border-radius: 4px;
+  background: var(--adh-border);
+  transform: translateX(-50%);
+}
+.adh-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  height: 100%;
+  padding: 24px 12px 10px;
+  background: var(--adh-bg-alt);
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+.adh-line {
+  display: block;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--adh-border);
+}
+.adh-line--w40 {
+  width: 40%;
+}
+.adh-line--w50 {
+  width: 50%;
+}
+.adh-line--w70 {
+  width: 70%;
+}
+.adh-line--w80 {
+  width: 80%;
+}
+.adh-line--title {
+  height: 10px;
+  width: 65%;
+}
+
+.adh-app-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.adh-app-top .adh-line {
+  margin-right: auto;
+}
+.adh-app-logo {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: linear-gradient(160deg, var(--adh-blue), var(--adh-coral));
+}
+.adh-app-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--adh-border);
+  background: var(--adh-surface);
+}
+
+.adh-app-hero {
+  display: grid;
+  gap: 8px;
+  padding: 14px 12px;
+  border-radius: 12px;
+  background: linear-gradient(150deg, var(--adh-blue), var(--adh-coral));
+}
+.adh-app-hero .adh-line {
+  background: rgba(255, 255, 255, 0.78);
+}
+.adh-app-cta {
+  display: block;
+  width: 58px;
+  height: 18px;
+  margin-top: 4px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.adh-app-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.adh-app-tile {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  padding: 9px 4px;
+  border: 1px solid var(--adh-border);
+  border-radius: 10px;
+  background: var(--adh-surface);
+  color: var(--adh-accent);
+}
+.adh-app-tile svg {
+  width: 17px;
+  height: 17px;
+}
+.adh-app-tile span {
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  font-weight: 600;
+  color: var(--adh-muted);
+}
+
+.adh-app-list {
+  display: grid;
+  gap: 9px;
+}
+.adh-app-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.adh-app-thumb {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--adh-border);
+  background: var(--adh-surface);
+}
+.adh-app-lines {
+  display: grid;
+  gap: 5px;
+  flex: 1;
+}
+
+.adh-app-tabbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: auto;
+  padding: 10px 8px 2px;
+  border-top: 1px solid var(--adh-border);
+}
+.adh-app-tabbar i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--adh-border);
+}
+.adh-app-tabbar i.is-on {
+  background: var(--adh-accent);
+}
+
+/* ---------- floating notifications ---------- */
+.adh-notif {
+  position: absolute;
+  z-index: 3;
+  width: 184px;
+}
+.adh-notif-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--adh-surface);
+  border: 1px solid var(--adh-border);
+  border-radius: 12px;
+  box-shadow: 0 12px 26px var(--adh-shadow);
+  animation: adhFloat 5s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -1.3s);
+}
+@keyframes adhFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+.adh-notif--a {
+  top: 52px;
+  left: 0;
+}
+.adh-notif--b {
+  top: 44%;
+  right: 0;
+}
+.adh-notif--c {
+  bottom: 56px;
+  left: 6px;
+}
+.adh-notif-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--adh-blue), var(--adh-coral));
+  color: #fff;
+}
+.adh-notif-icon svg {
+  width: 14px;
+  height: 14px;
+}
+.adh-notif-text {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.adh-notif-text b {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--adh-ink);
+  white-space: nowrap;
+}
+.adh-notif-text i {
+  font-style: normal;
+  font-size: 0.66rem;
+  color: var(--adh-muted);
+  white-space: nowrap;
+}
+
+.adh-chip {
+  position: absolute;
+  z-index: 3;
+  padding: 5px 12px;
+  border: 1px solid var(--adh-border);
+  border-radius: 999px;
+  background: var(--adh-surface);
+  box-shadow: 0 8px 18px var(--adh-shadow);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--adh-accent);
+  white-space: nowrap;
+}
+.adh-chip--a {
+  top: 14px;
+  right: 18px;
+}
+.adh-chip--b {
+  bottom: 22px;
+  right: 8px;
+}
+
+/* ===========================================================
+   SCROLL REVEAL
+=========================================================== */
+.adh-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.adh-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================================================
+   INCLUDED IN EVERY APP
+=========================================================== */
+.adh-include-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+.adh-include-card {
+  display: flex;
+  gap: 12px;
+  padding: 18px 20px;
+  background: var(--adh-bg-alt);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--adh-ink-soft);
+}
+.adh-mark {
+  color: var(--adh-accent);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+/* ===========================================================
+   LEDGER TABLES (process + every tab panel)
+=========================================================== */
+.adh-ledger {
+  margin-top: 18px;
+  border: 1px solid var(--adh-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--adh-surface);
+}
+.adh-ledger-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr 0.8fr;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px dotted var(--adh-border);
+  font-size: 0.9rem;
+  color: var(--adh-ink-soft);
+  align-items: baseline;
+}
+.adh-ledger-row:last-child {
+  border-bottom: none;
+}
+.adh-ledger-row span:first-child {
+  color: var(--adh-ink);
+}
+.adh-ledger-row span:last-child {
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--adh-ink);
+}
+.adh-ledger-header {
+  background: var(--adh-bg-alt);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--adh-muted);
+}
+.adh-ledger-header span:first-child,
+.adh-ledger-header span:last-child {
+  color: var(--adh-muted);
+}
+
+.adh-ledger--two .adh-ledger-row {
+  grid-template-columns: 1fr minmax(0, auto);
+}
+
+/* process table: text on both sides, left-aligned */
+.adh-ledger--steps .adh-ledger-row {
+  grid-template-columns: minmax(160px, 0.7fr) 2fr;
+}
+.adh-ledger--steps .adh-ledger-row span:last-child {
+  text-align: left;
+  font-family: var(--font-body);
+  color: var(--adh-ink-soft);
+}
+.adh-ledger--steps .adh-ledger-header span:last-child {
+  font-family: var(--font-mono);
+  color: var(--adh-muted);
+}
+.adh-step-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+.adh-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--adh-accent-2);
+  color: var(--adh-accent-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ===========================================================
+   PACKAGES
+   Large screens (>1100px): 3 cards in row one, the 4th card
+   full-width in row two with its content laid out in a row.
+   1100px and below: normal 2 x 2.  700px and below: 1 column.
+=========================================================== */
+.adh-package-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+@media (max-width: 700px) {
+  .adh-package-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.adh-package-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--adh-surface);
+  border: 1.5px solid var(--adh-border);
+  border-radius: 30px;
+  transition:
+    opacity 0.6s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.4s ease;
+}
+.adh-package-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px var(--adh-shadow);
+}
+
+.adh-plan-top {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background: linear-gradient(160deg, #2f5cff, #16161a);
+}
+.adh-plan-top--2 {
+  background: linear-gradient(160deg, #a30573, #ed4abb);
+}
+.adh-plan-top--3 {
+  background: linear-gradient(160deg, #16161a, #2f5cff);
+}
+.adh-plan-top--4 {
+  background: linear-gradient(160deg, #ed4abb, #a30573);
+}
+.appdev-page .adh-plan-top h3 {
+  color: #fff;
+}
+.appdev-page .adh-sheet-no {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: #e4dbdb;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6em;
+}
+.appdev-page .adh-package-price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3em;
+}
+.appdev-page .adh-package-price--long {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+.adh-plan-bottom {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 5px;
+  padding: 20px 26px 26px;
+}
+.adh-package-desc {
+  min-height: 3.4em;
+}
+.adh-package-lead {
+  font-style: italic;
+  color: var(--adh-ink);
+  margin-bottom: 0.4em;
+}
+.adh-package-list {
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--adh-ink-soft);
+}
+.adh-package-list li::before {
+  content: "✓ ";
+  color: var(--adh-accent-2);
+  font-family: var(--font-body);
+}
+.adh-package-btn {
+  margin-top: auto;
+}
+
+@media (min-width: 1101px) {
+  .adh-package-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* 4th card: full-width second row, header left + content right */
+  .adh-package-grid > .adh-package-card:nth-child(4) {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+  .adh-package-grid > .adh-package-card:nth-child(4) .adh-plan-top {
+    flex: 0 0 320px;
+    justify-content: center;
+    border-radius: 30px 0 0 30px;
+    padding: 28px 32px;
+  }
+  .adh-package-grid > .adh-package-card:nth-child(4) .adh-plan-bottom {
+    flex: 1;
+    padding: 28px 32px;
+  }
+  .adh-package-grid > .adh-package-card:nth-child(4) .adh-package-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+  .adh-package-grid > .adh-package-card:nth-child(4) .adh-package-btn {
+    width: auto;
+    min-width: 240px;
+    align-self: flex-start;
+  }
+}
+
+/* ---------- Most Recommended ---------- */
+.adh-package-featured {
+  border: 1px solid var(--adh-coral);
+  animation: adhPulseGlow 3.5s ease-in-out infinite;
+}
+@keyframes adhPulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--adh-accent) 14%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--adh-accent) 22%, transparent);
+  }
+}
+.adh-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(59, 87, 241, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(207, 12, 159, 0.35), transparent 45%),
+    #000;
+  color: #fff;
+  font-family: var(--font-body);
+  border: 1px solid #ece5e5;
+  font-size: 0.7rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+}
+.adh-package-featured .adh-plan-bottom .adh-btn-block {
+  padding: 13px 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #2563eb, #7c3aed, #db2777, #2563eb);
+  background-size: 300% 300%;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 7px 22px rgba(37, 99, 235, 0.25);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: adhGradientMove 5s ease infinite;
+}
+@keyframes adhGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.adh-package-featured .adh-plan-bottom .adh-btn-block:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow:
+    0 12px 30px rgba(37, 99, 235, 0.35),
+    0 8px 25px rgba(219, 39, 119, 0.2);
+}
+.adh-package-featured .adh-plan-bottom .adh-btn-block:active {
+  transform: scale(0.98);
+}
+
+.adh-fine-print {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--adh-muted);
+  max-width: 760px;
+  margin: 24px 0 0;
+}
+
+/* ===========================================================
+   TAB STRIPE (pill rail with sliding indicator, 5 tabs)
+=========================================================== */
+.adh-tab-rail {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  max-width: 1000px;
+  margin: 0 auto 48px;
+  padding: 10px;
+  background: var(--adh-bg-alt);
+  border: 1px solid var(--adh-border);
+  border-radius: 999px;
+}
+.adh-tab-btn {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.82rem;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--adh-ink-soft);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.adh-tab-btn.is-active {
+  color: #fff;
+}
+.adh-tab-indicator {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /* 5 equal buttons: (inner width - 4 gaps of 4px) / 5 */
+  width: calc((100% - 20px - 16px) / 5);
+  height: calc(100% - 20px);
+  background: var(--adh-accent);
+  border-radius: 999px;
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  z-index: 1;
+}
+
+.adh-tab-panel {
+  animation: adhPanelIn 0.5s ease both;
+}
+@keyframes adhPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.adh-panel-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+.adh-panel-head h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+.adh-panel-head p:last-child {
+  margin-bottom: 0;
+}
+
+.adh-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--adh-muted);
+  border-left: 2px solid var(--adh-gold);
+  padding-left: 12px;
+  margin-top: 18px;
+}
+
+/* ===========================================================
+   WHY CHOOSE US
+=========================================================== */
+.adh-why {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  /* background: var(--adh-why-c); */
+}
+.adh-why.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.adh-why-list {
+  list-style: none;
+  margin: 24px auto 0;
+  padding: 0;
+  max-width: 640px;
+  display: grid;
+  gap: 14px;
+  text-align: left;
+}
+.adh-why-list li {
+  display: flex;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--adh-ink-soft);
+}
+.adh-why-mark {
+  color: var(--adh-accent);
+  font-weight: 700;
+}
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+@media (max-width: 1000px) {
+  .adh-hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 900px) {
+  .appdev-page {
+    padding: 0 30px;
+  }
+  .adh-section {
+    padding: 48px 32px;
+  }
+
+  /* stripe: wrapping pills, active tab filled in */
+  .adh-tab-rail {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 22px;
+  }
+  .adh-tab-indicator {
+    display: none;
+  }
+  .adh-tab-btn {
+    flex: 1 1 40%;
+    padding: 10px 8px;
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
+  }
+  .adh-tab-btn.is-active {
+    background: var(--adh-accent);
+  }
+}
+
+@media (max-width: 760px) {
+  .adh-ledger-header {
+    display: none;
+  }
+  .adh-ledger-row,
+  .adh-ledger--steps .adh-ledger-row,
+  .adh-ledger--two .adh-ledger-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .adh-ledger-row span:last-child {
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .appdev-page {
+    padding: 0 12px;
+  }
+  .adh-section {
+    padding: 40px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .adh-stage {
+    min-height: 450px;
+  }
+  .adh-notif {
+    width: 150px;
+  }
+  .adh-notif-inner {
+    padding: 8px 9px;
+    gap: 8px;
+  }
+  .adh-notif-text i {
+    display: none;
+  }
+  .adh-notif--a {
+    top: 36px;
+  }
+  .adh-notif--c {
+    bottom: 48px;
+  }
+}
+
+/* ===========================================================
+   REDUCED MOTION
+=========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .appdev-page * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .adh-seal-wrap,
+  .adh-kicker,
+  .adh-eyebrow,
+  .adh-subtitle,
+  .adh-tagline,
+  .adh-pop,
+  .adh-word,
+  .adh-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .adh-notif-inner,
+  .adh-tab-panel,
+  .adh-package-featured {
+    animation: none !important;
+  }
+}

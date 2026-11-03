@@ -1,0 +1,134 @@
+/* =====================================================================
+   INDO SPARSH STUDIO - SHARED SERVICES DESIGN SYSTEM
+   One font pairing + one 5-colour palette (plus neutrals) for every
+   /services/* page. Imported by every page-level CSS file so that
+   every page's local (prefixed) tokens can simply point at these.
+   ===================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap");
+
+:root,
+body.light-mode {
+  color-scheme: light;
+
+  /* ---- neutrals ---- */
+  --color-bg: #f7f7fb;
+  --color-bg-alt: #eef0f8;
+  --color-surface: #ffffff;
+  --color-text: #15151c;
+  --color-text-muted: #55555a;
+  --color-border: rgba(21, 21, 28, 0.09);
+  --color-shadow: rgba(21, 21, 28, 0.12);
+
+  /* ---- brand accents (constant across light & dark) ---- */
+  --color-primary: #2f5cff;   /* blue   - primary CTA / links   */
+  --color-accent: #ff4b3e;    /* coral  - secondary highlight   */
+  --color-accent-2: #ffc738;  /* yellow - tertiary / badges     */
+  --ink-solid: #16161a;       /* near-black text on bright accents */
+
+  /* status badges only (kept close to the core hues) */
+  --color-success: #1fae6d;
+  --color-info: var(--color-primary);
+  --color-pending: var(--color-accent-2);
+}
+
+body.dark-mode {
+  color-scheme: dark;
+
+  --color-bg: #120d1f;
+  --color-bg-alt: #1a1430;
+  --color-surface: #1c1530;
+  --color-text: #f5f1ff;
+  --color-text-muted: #b6b0cc;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.55);
+
+  --color-primary: #6c8cff;
+  --color-accent: #ff6b5f;
+  --color-accent-2: #ffd166;
+  --ink-solid: #16161a;
+
+  --color-success: #34d399;
+  --color-info: var(--color-primary);
+  --color-pending: var(--color-accent-2);
+}
+
+:root,
+body.light-mode,
+body.dark-mode {
+  /* ---- typography ---- */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* ---- shape / motion ---- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 26px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-smooth: all 0.4s var(--ease);
+}
+
+/* ---------------------------------------------------------------------
+   Universal reveal-on-scroll animation. Every page's Reveal wrapper
+   toggles an "is-visible" class alongside its own prefixed reveal
+   class (e.g. .adh-reveal, .bm-reveal) - this base rule keeps the
+   motion identical everywhere; page files only need to set which
+   element it applies to.
+--------------------------------------------------------------------- */
+[class*="reveal"] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change: opacity, transform;
+}
+[class*="reveal"].is-visible,
+[class*="reveal"].visible,
+[class*="reveal"].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class*="reveal"] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Smooth theme + interaction transitions everywhere */
+*,
+*::before,
+*::after {
+  scrollbar-color: var(--color-text-muted) transparent;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Consistent, gentle hover lift for anything acting like a button/card */
+a,
+button {
+  transition: color 0.25s var(--ease), background-color 0.25s var(--ease),
+    border-color 0.25s var(--ease), transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+/* Fluid container helper reused by page wrappers for flexible layout */
+.theme-fluid-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding-inline: clamp(20px, 6vw, 100px);
+  box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}

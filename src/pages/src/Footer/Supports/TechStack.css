@@ -1,0 +1,491 @@
+/* ============================================
+   SPARSH STUDIO - TECH STACK PAGE
+   theme variables + animation
+   ============================================ */
+
+.tech-root {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --radius: 18px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --t: 0.35s;
+}
+
+/* ---------- LIGHT THEME ---------- */
+body.light-mode {
+  --bg: #d8e2f1;
+  --bg-soft: #eff2f8;
+  --text: #101a2c;
+  --text-muted: #56637d;
+  --accent: #2f6fed;
+  --accent-soft: #dde8fd;
+  --accent-2: #14b8c4;
+  --border: rgba(16, 26, 44, 0.12);
+  --shadow: 0 10px 30px rgba(16, 26, 44, 0.08);
+  --card-bg: #ffffff;
+}
+
+/* ---------- DARK THEME (dark blue) ---------- */
+body.dark-mode {
+  --bg: #090a0a;
+  --bg-soft: #0f121b;
+  --text: #eaf0fb;
+  --text-muted: #93a2c4;
+  --accent: #5b93ff;
+  --accent-soft: rgba(91, 147, 255, 0.16);
+  --accent-2: #34d6d6;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  --card-bg: #101c3f;
+}
+
+/* ---------- BASE ---------- */
+.tech-root {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: background var(--t) var(--ease), color var(--t) var(--ease);
+  overflow-x: hidden;
+}
+
+.tech-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+      circle at 12% 0%,
+      var(--accent-soft) 0%,
+      transparent 40%
+    ),
+    radial-gradient(circle at 90% 10%, var(--accent-soft) 0%, transparent 35%);
+  opacity: 0.9;
+}
+
+.tech-main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- TOP BAR (theme toggle only) ---------- */
+.tech-top-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+
+/* ---------- THEME TOGGLE ---------- */
+.tech-theme-toggle {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform var(--t) var(--ease);
+}
+
+.tech-theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.tech-theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.tech-toggle-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+.tech-toggle-thumb {
+  position: absolute;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  transition: transform var(--t) var(--ease);
+}
+
+.tech-root[data-theme="dark"] .tech-toggle-thumb {
+  transform: translateX(20px);
+}
+
+/* ---------- MAIN / HERO ---------- */
+.tech-main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2vw 6vw 6vw;
+}
+
+.tech-hero {
+  text-align: center;
+  padding: 40px 0 32px;
+}
+
+.tech-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  animation: tech-fade-up 0.7s var(--ease) both;
+}
+
+.tech-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  line-height: 1.15;
+  margin: 14px 0 14px;
+  animation: tech-fade-up 0.8s var(--ease) 0.1s both;
+}
+
+.tech-title-accent {
+  font-style: italic;
+  color: var(--accent-2);
+}
+
+.tech-subtitle {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--text-muted);
+  line-height: 1.6;
+  animation: tech-fade-up 0.8s var(--ease) 0.2s both;
+}
+
+@keyframes tech-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- MARQUEE ---------- */
+.tech-marquee {
+  overflow: hidden;
+  margin: 8px 0 36px;
+  padding: 16px 0;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.tech-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  animation: tech-marquee-scroll 26s linear infinite;
+}
+
+.tech-marquee:hover .tech-marquee-track {
+  animation-play-state: paused;
+}
+
+.tech-marquee-item {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+@keyframes tech-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- FILTER ---------- */
+.tech-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.tech-filter-btn {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--t) var(--ease), color var(--t) var(--ease),
+    border-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+.tech-filter-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.tech-filter-btn.is-active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ---------- SERVICE GRID ---------- */
+.tech-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tech-card {
+  background: linear-gradient(135deg, var(--accent-soft), transparent 70%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  opacity: 0;
+  animation: tech-card-in 0.6s var(--ease) forwards;
+  transition: border-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+@keyframes tech-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tech-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.tech-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.tech-card-index {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-soft);
+  -webkit-text-stroke: 1.5px var(--accent);
+  flex-shrink: 0;
+}
+
+.tech-card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.tech-card-blurb {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.tech-card-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tech-group-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.tech-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: var(--text);
+  opacity: 0;
+  animation: tech-badge-in 0.4s var(--ease) forwards;
+  transition: transform var(--t) var(--ease), border-color var(--t) var(--ease),
+    box-shadow var(--t) var(--ease);
+}
+
+@keyframes tech-badge-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tech-badge:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: var(--accent);
+  box-shadow: 0 10px 20px rgba(200, 134, 47, 0.16);
+}
+
+.tech-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.tech-badge-icon img{
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  object-fit: contain;
+  background-color: #fff;
+}
+
+/* ---------- CTA ---------- */
+.tech-cta {
+  margin-top: 48px;
+  text-align: center;
+  padding: 40px 24px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--accent-soft), transparent 70%);
+  border: 1px solid var(--border);
+}
+
+.tech-cta h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 0 0 8px;
+}
+
+.tech-cta p {
+  color: var(--text-muted);
+  margin: 0 0 20px;
+}
+
+.tech-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+
+.tech-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(200, 134, 47, 0.3);
+}
+
+.tech-cta-arrow {
+  transition: transform var(--t) var(--ease);
+}
+
+.tech-cta-btn:hover .tech-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 640px) {
+  .tech-card-head {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tech-eyebrow,
+  .tech-title,
+  .tech-subtitle,
+  .tech-card,
+  .tech-badge,
+  .tech-marquee-track {
+    animation: none !important;
+  }
+  .tech-card,
+  .tech-badge {
+    opacity: 1;
+  }
+  .tech-card:hover,
+  .tech-badge:hover,
+  .tech-cta-btn:hover,
+  .tech-filter-btn:hover,
+  .tech-theme-toggle:hover {
+    transform: none;
+  }
+}

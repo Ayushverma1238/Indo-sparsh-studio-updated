@@ -1,0 +1,1111 @@
+@import "./_theme.css";
+
+/* ===========================================================
+   UI/UX PAGE - everything is scoped under .ux-page and every
+   class starts with "ux-", so nothing leaks into other pages.
+   Colors and fonts come only from the shared studio theme.
+=========================================================== */
+.ux-page {
+  --ux-bg-alt: var(--color-bg-alt);
+  --ux-surface: var(--color-surface);
+  --ux-ink: var(--color-text);
+  --ux-ink-soft: var(--color-text-muted);
+  --ux-muted: var(--color-text-muted);
+  --ux-accent: var(--color-primary);
+  --ux-accent-2: var(--color-accent);
+  --ux-gold: var(--color-accent-2);
+  --ux-border: var(--color-border);
+  --ux-shadow: var(--color-shadow);
+  --ux-why-c: var(--color-bg);
+  --ux-blue: var(--color-primary);
+  --ux-coral: var(--color-accent);
+  --ux-yellow: var(--color-accent-2);
+
+  position: relative;
+  padding: 0 50px;
+  font-family: var(--font-body);
+  color: var(--ux-ink);
+  overflow-x: clip;
+}
+body.light-mode .ux-page {
+  --ux-why-c: #ffffff;
+}
+body.dark-mode .ux-page {
+  --ux-muted: #cec6c6;
+}
+
+.ux-page *,
+.ux-page *::before,
+.ux-page *::after {
+  box-sizing: border-box;
+}
+
+.ux-page h1,
+.ux-page h2,
+.ux-page h3,
+.ux-page h4 {
+  font-family: var(--font-display);
+  color: var(--ux-ink);
+  margin: 0 0 0.3em;
+  line-height: 1.15;
+}
+.ux-page h2 {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  letter-spacing: -0.01em;
+}
+.ux-page h3 {
+  font-size: 0.8rem;
+}
+.ux-page p {
+  color: var(--ux-ink-soft);
+  line-height: 1.6;
+  margin: 0 0 1em;
+}
+
+.ux-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 64px 100px;
+}
+
+.ux-eyebrow-text {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  color: var(--ux-accent-2);
+  margin-bottom: 0.6em;
+}
+.ux-section-sub {
+  max-width: 620px;
+  margin-bottom: 2.4em;
+}
+
+/* ===========================================================
+   BUTTONS
+=========================================================== */
+.ux-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.25s ease;
+}
+.ux-btn-primary {
+  background: linear-gradient(160deg, var(--ux-blue), var(--ux-coral));
+  color: #fff;
+}
+.ux-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px var(--ux-shadow);
+}
+.ux-btn-ghost {
+  background: transparent;
+  color: var(--ux-ink);
+  border: 1px solid var(--ux-border);
+}
+.ux-btn-ghost:hover {
+  background: var(--ux-bg-alt);
+  transform: translateY(-3px);
+}
+.ux-btn-block {
+  width: 100%;
+}
+
+/* ===========================================================
+   HERO (left side)
+=========================================================== */
+.ux-hero {
+  padding-top: 72px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.ux-seal-wrap {
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: scale(0.8) rotate(-8deg);
+}
+.is-loaded .ux-seal-wrap {
+  animation: uxSealIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+@keyframes uxSealIn {
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+.ux-seal {
+  width: 96px;
+  height: 96px;
+}
+.ux-seal-svg {
+  width: 100%;
+  height: 100%;
+}
+.ux-seal-ring-outer {
+  fill: none;
+  stroke: var(--ux-gold);
+  stroke-width: 2;
+}
+.ux-seal-ring-inner {
+  fill: none;
+  stroke: var(--ux-accent);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 4;
+}
+.ux-seal-text {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  fill: var(--ux-gold);
+}
+.ux-seal-center {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  fill: var(--ux-accent);
+}
+
+.ux-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ux-gold);
+  margin-bottom: 6px;
+  opacity: 0;
+}
+.is-loaded .ux-kicker {
+  animation: uxFadeUp 0.7s ease forwards;
+  animation-delay: 0.15s;
+}
+
+.ux-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--ux-accent);
+  border: 1px solid var(--ux-border);
+  background: var(--ux-bg-alt);
+  padding: 5px 12px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+  opacity: 0;
+}
+.is-loaded .ux-eyebrow {
+  animation: uxFadeUp 0.7s ease forwards;
+  animation-delay: 0.25s;
+}
+
+.ux-subtitle {
+  max-width: 58ch;
+  opacity: 0;
+}
+.is-loaded .ux-subtitle {
+  animation: uxFadeUp 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.ux-tagline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--ux-ink);
+  border-left: 3px solid var(--ux-gold);
+  padding-left: 12px;
+  opacity: 0;
+}
+.is-loaded .ux-tagline {
+  animation: uxFadeUp 0.8s ease forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes uxFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ux-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Animated headline */
+.ux-headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 3.8vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.4em;
+}
+.ux-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: ux-word-in 0.7s var(--ease, ease) forwards;
+}
+.ux-word--a {
+  animation-delay: 0.1s;
+}
+.ux-word--b {
+  animation-delay: 0.2s;
+  background: linear-gradient(100deg, var(--ux-blue), var(--ux-coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ux-word--d {
+  animation-delay: 0.4s;
+  background: linear-gradient(100deg, var(--ux-coral), var(--ux-yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes ux-word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===========================================================
+   HERO (right side) - design canvas
+=========================================================== */
+.ux-hero-visual {
+  min-width: 0;
+}
+
+.ux-canvas {
+  position: relative;
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px var(--ux-shadow);
+  opacity: 0;
+  transform: translateY(20px);
+}
+.is-loaded .ux-canvas {
+  animation: uxFadeUp 0.8s ease forwards;
+  animation-delay: 0.35s;
+}
+
+.ux-canvas-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 16px;
+  background: var(--ux-bg-alt);
+  border-bottom: 1px solid var(--ux-border);
+  border-radius: 14px 14px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ux-muted);
+}
+.ux-tools {
+  display: flex;
+  gap: 10px;
+  color: var(--ux-accent);
+}
+.ux-tools i {
+  font-style: normal;
+}
+.ux-canvas-title {
+  letter-spacing: 0.04em;
+}
+.ux-canvas-zoom {
+  padding: 2px 8px;
+  border: 1px solid var(--ux-border);
+  border-radius: 999px;
+  background: var(--ux-surface);
+}
+
+.ux-canvas-body {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 22px 18px;
+  background-image: radial-gradient(var(--ux-border) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.ux-frame {
+  display: grid;
+  gap: 9px;
+  align-content: start;
+  padding: 12px;
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: 10px;
+}
+.ux-frame-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ux-muted);
+}
+.ux-arrow {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--ux-accent);
+}
+
+/* pop-in build for the canvas pieces */
+.ux-pop {
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+}
+.is-loaded .ux-pop {
+  animation: uxPop 0.55s ease forwards;
+  animation-delay: calc(0.7s + var(--i, 0) * 0.16s);
+}
+@keyframes uxPop {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ux-line {
+  display: block;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--ux-border);
+}
+.ux-line--w60 {
+  width: 60%;
+}
+.ux-line--w70 {
+  width: 70%;
+}
+.ux-line--w90 {
+  width: 90%;
+}
+.ux-line--title {
+  height: 10px;
+  width: 65%;
+  background: linear-gradient(100deg, var(--ux-blue), var(--ux-coral));
+}
+
+/* wireframe pieces */
+.ux-wire-img {
+  display: block;
+  height: 58px;
+  border: 1px dashed var(--ux-muted);
+  border-radius: 6px;
+  background:
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 0.5px),
+      var(--ux-border) 50%,
+      transparent calc(50% + 0.5px)
+    ),
+    linear-gradient(
+      to bottom right,
+      transparent calc(50% - 0.5px),
+      var(--ux-border) 50%,
+      transparent calc(50% + 0.5px)
+    );
+}
+.ux-wire-btn {
+  display: block;
+  width: 56px;
+  height: 16px;
+  margin-top: 2px;
+  border: 1px solid var(--ux-muted);
+  border-radius: 5px;
+}
+
+/* high-fidelity pieces */
+.ux-ui-img {
+  display: block;
+  height: 58px;
+  border-radius: 6px;
+  background: linear-gradient(160deg, var(--ux-blue), var(--ux-coral));
+}
+.ux-ui-btn {
+  display: block;
+  width: 56px;
+  height: 16px;
+  margin-top: 2px;
+  border-radius: 5px;
+  background: linear-gradient(160deg, var(--ux-blue), var(--ux-coral));
+}
+
+/* tokens row */
+.ux-tokens {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 18px 18px;
+  padding: 12px 14px;
+  background: var(--ux-bg-alt);
+  border: 1px solid var(--ux-border);
+  border-radius: 10px;
+}
+.ux-swatches {
+  display: flex;
+  gap: 8px;
+}
+.ux-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--ux-surface);
+  box-shadow: 0 0 0 1px var(--ux-border);
+}
+.ux-swatch--1 {
+  background: var(--ux-blue);
+}
+.ux-swatch--2 {
+  background: var(--ux-coral);
+}
+.ux-swatch--3 {
+  background: var(--ux-yellow);
+}
+.ux-swatch--4 {
+  background: var(--ux-ink);
+}
+.ux-type {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--ux-ink);
+}
+.ux-token-btn {
+  margin-left: auto;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: linear-gradient(160deg, var(--ux-blue), var(--ux-coral));
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+/* floating Figma-style cursor */
+.ux-cursor {
+  position: absolute;
+  right: 26px;
+  bottom: 92px;
+  pointer-events: none;
+}
+.ux-cursor-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  animation: uxFloat 4s ease-in-out infinite;
+}
+@keyframes uxFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-6px, -4px);
+  }
+}
+.ux-cursor-svg {
+  width: 18px;
+  height: 22px;
+  fill: var(--ux-accent);
+  stroke: var(--ux-surface);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.ux-cursor-tag {
+  margin-top: 14px;
+  padding: 3px 9px;
+  border-radius: 0 8px 8px 8px;
+  background: var(--ux-accent);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ===========================================================
+   SCROLL REVEAL
+=========================================================== */
+.ux-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.ux-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================================================
+   INCLUDED IN EVERY DESIGN
+=========================================================== */
+.ux-include-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+.ux-include-card {
+  display: flex;
+  gap: 12px;
+  padding: 18px 20px;
+  background: var(--ux-bg-alt);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ux-ink-soft);
+}
+.ux-mark {
+  color: var(--ux-accent);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+/* ===========================================================
+   LEDGER TABLES (process, redesign, add-ons)
+=========================================================== */
+.ux-ledger {
+  margin-top: 18px;
+  border: 1px solid var(--ux-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ux-surface);
+}
+.ux-ledger-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr 0.8fr;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px dotted var(--ux-border);
+  font-size: 0.9rem;
+  color: var(--ux-ink-soft);
+  align-items: baseline;
+}
+.ux-ledger-row:last-child {
+  border-bottom: none;
+}
+.ux-ledger-row span:first-child {
+  color: var(--ux-ink);
+}
+.ux-ledger-row span:last-child {
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--ux-ink);
+}
+.ux-ledger-header {
+  background: var(--ux-bg-alt);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ux-muted);
+}
+.ux-ledger-header span:first-child,
+.ux-ledger-header span:last-child {
+  color: var(--ux-muted);
+}
+
+.ux-ledger--two .ux-ledger-row {
+  grid-template-columns: 1fr minmax(0, auto);
+}
+
+/* process table: text on both sides, left-aligned */
+.ux-ledger--steps .ux-ledger-row {
+  grid-template-columns: minmax(160px, 0.7fr) 2fr;
+}
+.ux-ledger--steps .ux-ledger-row span:last-child {
+  text-align: left;
+  font-family: var(--font-body);
+  color: var(--ux-ink-soft);
+}
+.ux-ledger--steps .ux-ledger-header span:last-child {
+  font-family: var(--font-mono);
+  color: var(--ux-muted);
+}
+.ux-step-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+.ux-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--ux-accent-2);
+  color: var(--ux-accent-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ===========================================================
+   PACKAGES (3 cards)
+=========================================================== */
+.ux-package-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+.ux-package-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--ux-surface);
+  border: 1.5px solid var(--ux-border);
+  border-radius: 30px;
+  transition:
+    opacity 0.6s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.4s ease;
+}
+.ux-package-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px var(--ux-shadow);
+}
+
+.ux-plan-top {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background: linear-gradient(160deg, #2f5cff, #16161a);
+}
+.ux-plan-top--2 {
+  background: linear-gradient(160deg, #a30573, #ed4abb);
+}
+.ux-plan-top--3 {
+  background: linear-gradient(160deg, #16161a, #2f5cff);
+}
+.ux-page .ux-plan-top h3 {
+  color: #fff;
+}
+.ux-page .ux-sheet-no {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: #e4dbdb;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6em;
+}
+.ux-page .ux-package-price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3em;
+}
+
+.ux-plan-bottom {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 5px;
+  padding: 20px 26px 26px;
+}
+.ux-package-desc {
+  min-height: 3.4em;
+}
+.ux-package-lead {
+  font-style: italic;
+  color: var(--ux-ink);
+  margin-bottom: 0.4em;
+}
+.ux-package-list {
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--ux-ink-soft);
+}
+.ux-package-list li::before {
+  content: "✓ ";
+  color: var(--ux-accent-2);
+  font-family: var(--font-body);
+}
+.ux-package-btn {
+  margin-top: auto;
+}
+
+/* ---------- Most Recommended (same treatment as other pages) ---------- */
+.ux-package-featured {
+  border: 1px solid var(--ux-coral);
+  animation: uxPulseGlow 3.5s ease-in-out infinite;
+}
+@keyframes uxPulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ux-accent) 14%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--ux-accent) 22%, transparent);
+  }
+}
+.ux-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(59, 87, 241, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(207, 12, 159, 0.35), transparent 45%),
+    #000;
+  color: #fff;
+  font-family: var(--font-body);
+  border: 1px solid #ece5e5;
+  font-size: 0.7rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+}
+.ux-package-featured .ux-plan-bottom .ux-btn-block {
+  padding: 13px 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #2563eb, #7c3aed, #db2777, #2563eb);
+  background-size: 300% 300%;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 7px 22px rgba(37, 99, 235, 0.25);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: uxGradientMove 5s ease infinite;
+}
+@keyframes uxGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.ux-package-featured .ux-plan-bottom .ux-btn-block:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow:
+    0 12px 30px rgba(37, 99, 235, 0.35),
+    0 8px 25px rgba(219, 39, 119, 0.2);
+}
+.ux-package-featured .ux-plan-bottom .ux-btn-block:active {
+  transform: scale(0.98);
+}
+
+.ux-fine-print {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--ux-muted);
+  max-width: 760px;
+  margin: 24px 0 0;
+}
+.ux-fine-print--flush {
+  margin-top: 0;
+}
+
+/* ===========================================================
+   TAB STRIPE (pill rail with sliding indicator)
+=========================================================== */
+.ux-tab-rail {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  max-width: 680px;
+  margin: 0 auto 48px;
+  padding: 10px;
+  background: var(--ux-bg-alt);
+  border: 1px solid var(--ux-border);
+  border-radius: 999px;
+}
+.ux-tab-btn {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--ux-ink-soft);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+.ux-tab-btn.is-active {
+  color: #fff;
+}
+.ux-tab-indicator {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /* 3 equal buttons: (inner width - 2 gaps of 4px) / 3 */
+  width: calc((100% - 20px - 8px) / 3);
+  height: calc(100% - 20px);
+  background: var(--ux-accent);
+  border-radius: 999px;
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  z-index: 1;
+}
+
+.ux-tab-panel {
+  animation: uxPanelIn 0.5s ease both;
+}
+@keyframes uxPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ux-panel-head {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 32px;
+}
+.ux-panel-head h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+
+.ux-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ux-muted);
+  border-left: 2px solid var(--ux-gold);
+  padding-left: 12px;
+  margin-top: 18px;
+}
+
+/* design support retainer */
+.ux-retainer {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 32px;
+  background: var(--ux-surface);
+  border: 1.5px solid var(--ux-border);
+  border-radius: 10px;
+}
+.ux-page .ux-retainer-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.1em;
+}
+.ux-retainer-price {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.6em;
+  background: linear-gradient(100deg, var(--ux-blue), var(--ux-coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ux-retainer-price span {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.ux-retainer-list {
+  margin: 0;
+  gap: 14px;
+  font-size: 0.95rem;
+}
+
+/* ===========================================================
+   WHY CHOOSE US
+=========================================================== */
+.ux-why {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.ux-why.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ux-why-list {
+  list-style: none;
+  margin: 24px auto 0;
+  padding: 0;
+  max-width: 640px;
+  display: grid;
+  gap: 14px;
+  text-align: left;
+}
+.ux-why-list li {
+  display: flex;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--ux-ink-soft);
+}
+.ux-why-mark {
+  color: var(--ux-accent);
+  font-weight: 700;
+}
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+@media (max-width: 1000px) {
+  .ux-hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .ux-package-grid {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .ux-page {
+    padding: 0 30px;
+  }
+  .ux-section {
+    padding: 48px 32px;
+  }
+  .ux-retainer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 760px) {
+  .ux-tab-rail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 22px;
+  }
+  .ux-tab-indicator {
+    display: none;
+  }
+  .ux-tab-btn {
+    white-space: normal;
+    padding: 10px 8px;
+    font-size: 0.78rem;
+    line-height: 1.25;
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
+  }
+  .ux-tab-btn.is-active {
+    background: var(--ux-accent);
+  }
+
+  .ux-ledger-header {
+    display: none;
+  }
+  .ux-ledger-row,
+  .ux-ledger--steps .ux-ledger-row,
+  .ux-ledger--two .ux-ledger-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .ux-ledger-row span:last-child {
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .ux-page {
+    padding: 0 12px;
+  }
+  .ux-section {
+    padding: 40px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ux-canvas-body {
+    grid-template-columns: 1fr;
+  }
+  .ux-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+  .ux-cursor {
+    display: none;
+  }
+}
+
+/* ===========================================================
+   REDUCED MOTION
+=========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .ux-page * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ux-seal-wrap,
+  .ux-kicker,
+  .ux-eyebrow,
+  .ux-subtitle,
+  .ux-tagline,
+  .ux-canvas,
+  .ux-pop,
+  .ux-word,
+  .ux-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .ux-cursor-inner,
+  .ux-tab-panel,
+  .ux-package-featured {
+    animation: none !important;
+  }
+}

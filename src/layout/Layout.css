@@ -1,0 +1,2034 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+:root {
+  --promo-height: 40px;
+  --header-height: 70px;
+  --total-header: calc(var(--promo-height) + var(--header-height));
+}
+
+* {
+  box-sizing: border-box;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ================= WRAPPER ================= */
+
+.top-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--total-header);
+  z-index: 1000;
+
+  background: rgba(2, 6, 23, 0.95); /* 🔥 ADD THIS */
+  backdrop-filter: blur(10px);
+}
+
+/* ===================================================
+   PROMO TOP BAR
+=================================================== */
+
+.promo-bar {
+  height: var(--promo-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+
+  background: linear-gradient(90deg, #22d3ee, #a855f7);
+  color: white;
+}
+
+.promo-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  /* flex-wrap: wrap; */
+}
+
+/* Button */
+
+.promo-btn {
+  background: white;
+  color: #0f172a;
+  padding: 6px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+
+  font-size: 0.8rem;
+  text-align: center;
+  width: 125px;
+  display: inline-block;
+  font-weight: 600;
+  transition: 0.3s ease;
+  word-break: keep-all;
+}
+
+@media (max-width: 400px) {
+  .promo-btn {
+    padding: 6px;
+    width: 150px;
+  }
+}
+
+.promo-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.cyber-header {
+  height: var(--header-height);
+  padding: 0 clamp(20px, 4vw, 80px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: transparent;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+
+  position: relative;
+  z-index: 1000;
+}
+
+/* =========================================
+   LOGO
+========================================= */
+
+.cyber-logo {
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #ffffff;
+/* 
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.7),
+    0 0 14px rgba(200, 230, 255, 0.6),
+    0 0 32px rgba(120, 200, 255, 0.5); */
+
+  /* animation: whiteGlow 2.8s ease-in-out infinite alternate; */
+}
+
+@keyframes whiteGlow {
+  from {
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.4),
+      0 0 10px rgba(200, 230, 255, 0.4),
+      0 0 22px rgba(120, 200, 255, 0.3);
+  }
+  to {
+    text-shadow:
+      0 0 8px rgba(255, 255, 255, 0.9),
+      0 0 18px rgba(220, 240, 255, 0.8),
+      0 0 45px rgba(120, 200, 255, 0.6);
+  }
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.cyber-nav {
+  display: flex;
+  align-items: center; /* ⭐ Perfect vertical alignment */
+  gap: clamp(15px, 2vw, 28px);
+  margin-right: 20px; /* 👈 add space from right side */
+}
+
+/* NAV LINKS */
+
+.cyber-nav a {
+  display: flex;
+  align-items: center;
+  height: 38px;
+
+  text-decoration: none;
+  color: #e5e7eb;
+
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  letter-spacing: 1px;
+
+  position: relative;
+
+  transition: 0.3s ease;
+}
+
+/* Neon underline */
+
+.cyber-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+
+  bottom: 8px; /* ⭐ tighter spacing */
+  transform: translateY(100%);
+
+  width: 0%;
+  height: 2px;
+
+  background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
+  box-shadow: 0 0 10px #22d3ee;
+
+  transition: 0.4s ease;
+}
+
+.cyber-nav a:hover {
+  color: #22d3ee;
+  /* text-shadow: 0 0 8px #22d3ee; */
+}
+
+.cyber-nav a:hover::after {
+  width: 100%;
+}
+
+.cyber-nav a.active {
+  color: #22d3ee;
+}
+
+.cyber-nav a.active::after {
+  width: 100%;
+}
+
+/* =========================================
+   ULTRA PREMIUM WHITE GLASS BUTTON 😈🔥
+========================================= */
+
+.quote-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 42px;
+  padding: 8px 20px;
+
+  border-radius: 12px;
+
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  letter-spacing: 1px;
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  /* PREMIUM WHITE GLASS */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+
+  color: black !important;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  /* ⭐ ADD THIS */
+  cursor: pointer;
+}
+
+/* =========================================
+   TEXT
+========================================= */
+
+.quote-text {
+  position: relative;
+  z-index: 5;
+
+  font-weight: 600;
+  color: black !important;
+
+  transition: 0.3s ease;
+}
+
+/* =========================================
+   RGB MOVING BORDER
+========================================= */
+
+.quote-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  padding: 1px;
+
+  background: linear-gradient(120deg, #22d3ee, #a855f7, #ec4899, #22d3ee);
+
+  background-size: 300% 300%;
+
+  animation: borderFlow 5s linear infinite;
+  
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  z-index: 1;
+}
+
+/* =========================================
+   GLASS SHINE SWEEP
+========================================= */
+
+.quote-btn::after {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: 0.7s;
+
+  z-index: 2;
+}
+
+.quote-btn:hover::after {
+  left: 130%;
+}
+
+/* =========================================
+   PREMIUM HOVER ANIMATION
+========================================= */
+
+.quote-btn:hover {
+  transform: translateY(-4px) scale(1.06);
+
+  box-shadow:
+    0 0 18px rgba(34, 211, 238, 0.5),
+    0 0 35px rgba(168, 85, 247, 0.4),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   TEXT HOVER (CYAN GLOW)
+========================================= */
+
+.quote-btn:hover .quote-text {
+  color: #22d3ee !important;
+
+  text-shadow:
+    0 0 6px rgba(34, 211, 238, 0.6),
+    0 0 12px rgba(34, 211, 238, 0.4);
+}
+
+/* =========================================
+   FLOATING LIGHT AURA (ULTRA PREMIUM)
+========================================= */
+
+.quote-btn:hover {
+  animation: auraPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes auraPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 18px rgba(34, 211, 238, 0.5),
+      0 0 35px rgba(168, 85, 247, 0.3);
+  }
+
+  50% {
+    box-shadow:
+      0 0 30px rgba(236, 72, 153, 0.6),
+      0 0 50px rgba(34, 211, 238, 0.5);
+  }
+}
+
+/* =========================================
+   BORDER FLOW
+========================================= */
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* =========================================
+   HAMBURGER
+========================================= */
+
+.cyber-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cyber-hamburger span {
+  width: 28px;
+  height: 3px;
+  background: #22d3ee;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #22d3ee;
+  transition: 0.4s;
+}
+
+/* =========================================
+   MAIN
+========================================= */
+
+.cyber-main {
+  min-height: 100vh;
+  margin-top: var(--total-header); /* 🔥 PUSH CONTENT DOWN */
+}
+
+/* =========================================
+   TAB
+========================================= */
+
+@media (max-width: 1024px) {
+  .cyber-nav {
+    gap: 16px;
+  }
+
+  .quote-btn {
+    padding: 6px 14px;
+    font-size: 0.85rem;
+  }
+
+  .cyber-logo {
+    font-size: 1.1rem;
+  }
+}
+
+/* =========================================
+   LARGE MOBILE
+========================================= */
+
+@media (max-width: 992px) {
+  .cyber-header {
+    padding: 8px 14px; /* smaller padding */
+  }
+
+  .cyber-logo {
+    max-width: 55%;
+    font-size: 0.88rem; /* reduced */
+    letter-spacing: 0.8px;
+  }
+
+  .cyber-nav {
+    gap: 12px; /* tighter spacing */
+    margin-right: 0;
+  }
+
+  .cyber-nav a {
+    font-size: 0.78rem; /* smaller nav text */
+  }
+
+  .quote-btn {
+    height: 32px; /* smaller height */
+    padding: 0 12px; /* less horizontal padding */
+    font-size: 0.75rem; /* smaller text */
+  }
+
+  .cyber-hamburger {
+    display: none;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --promo-height: 85px;
+  }
+
+  .cyber-header {
+    position: relative; /* important */
+    padding: 12px 30px;
+  }
+
+  /* Show hamburger */
+  .cyber-hamburger {
+    display: flex;
+    cursor: pointer;
+    z-index: 6000;
+  }
+
+  /* Hide nav by default */
+  .cyber-nav {
+    position: fixed;
+    top: 100%; /* 🔥 directly below header */
+    left: 0;
+    width: 100%;
+
+    flex-direction: column;
+    align-items: center;
+
+    background: rgba(2, 6, 23, 0.98);
+    backdrop-filter: blur(12px);
+
+    padding: 35px 0;
+    gap: 25px;
+
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.35s ease;
+
+    z-index: 5000;
+  }
+
+  .cyber-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cyber-nav a {
+    font-size: 0.9rem;
+  }
+
+  .quote-btn {
+    width: 80%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .cyber-header {
+    padding: 10px 30px;
+  }
+
+  .cyber-logo {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .cyber-nav a {
+    font-size: 0.85rem;
+  }
+
+  .quote-btn {
+    width: 85%;
+    justify-content: center;
+  }
+}
+
+/* =========================================
+   EXTRA SMALL
+========================================= */
+
+@media (max-width: 400px) {
+  .cyber-logo {
+    font-size: 0.85rem;
+  }
+
+  .quote-btn {
+    font-size: 0.75rem;
+  }
+}
+
+/* =========================================
+   😈 RESPONSIVE CYBER SCROLLBAR - FINAL
+========================================= */
+
+.cyber-scrollbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  width: 10px;
+  height: 100vh;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+
+  border-radius: 50px;
+
+  z-index: 9999;
+
+  /* smooth GPU rendering */
+  transform: translateZ(0);
+}
+
+/* ===== THUMB ===== */
+
+.cyber-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  border-radius: 50px;
+
+  background: linear-gradient(180deg, #22d3ee, #a855f7, #ec4899, #22d3ee);
+
+  background-size: 200% 200%;
+  animation: cyberFlow 4s linear infinite;
+
+  box-shadow:
+    0 0 12px #22d3ee,
+    0 0 25px #a855f7,
+    0 0 40px #ec4899;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  cursor: grab;
+}
+
+.cyber-thumb:active {
+  cursor: grabbing;
+}
+
+.cyber-thumb:hover {
+  transform: scaleX(1.3);
+
+  box-shadow:
+    0 0 20px #22d3ee,
+    0 0 40px #a855f7,
+    0 0 70px #ec4899;
+}
+
+/* ===== RGB FLOW ===== */
+
+@keyframes cyberFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 200%;
+  }
+}
+
+/* =========================================
+   RESPONSIVE RULES
+========================================= */
+
+/* Tablet */
+
+@media (max-width: 1024px) {
+  .cyber-scrollbar {
+    width: 8px;
+  }
+}
+
+/* Mobile - Hide custom scrollbar */
+
+@media (max-width: 768px) {
+  .cyber-scrollbar {
+    display: none;
+  }
+}
+
+/* =========================================
+   🍪 ANIMATED GRADIENT CYBER COOKIE
+========================================= */
+
+.cookie-float {
+  position: fixed;
+  top: calc(var(--total-header) + 25px);
+  left: 26px;
+
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 3000;
+  cursor: pointer;
+
+  animation: cookieFloat 4s ease-in-out infinite;
+}
+
+/* ========= ANIMATED GRADIENT BUTTON ========= */
+
+.cookie-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    270deg,
+    #7c3aed,
+    #ec4899,
+    #06b6d4,
+    #22d3ee,
+    #7c3aed
+  );
+
+  background-size: 400% 400%;
+  animation: gradientMove 6s ease infinite;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(124, 58, 237, 0.9),
+    0 0 60px rgba(6, 182, 212, 0.7);
+
+  position: relative;
+  z-index: 3;
+
+  transition: all 0.3s ease;
+}
+
+.cookie-float:hover .cookie-circle {
+  transform: scale(1.15) rotate(12deg);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(236, 72, 153, 1),
+    0 0 80px rgba(6, 182, 212, 0.9);
+}
+
+/* ========= ICON ========= */
+
+.cookie-icon {
+  font-size: 34px;
+  color: #ffffff;
+
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+/* ========= DUAL PULSE ========= */
+
+.cookie-pulse,
+.cookie-pulse::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  background: rgba(6, 182, 212, 0.4);
+
+  animation: cookiePulse 2.5s infinite;
+  z-index: 1;
+}
+
+.cookie-pulse::after {
+  animation-delay: 1.2s;
+}
+
+/* ========= GRADIENT ANIMATION ========= */
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ========= PULSE ========= */
+
+@keyframes cookiePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ========= FLOAT ========= */
+
+@keyframes cookieFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 480px) {
+  .cookie-float {
+    width: 56px;
+    height: 56px;
+    top: calc(var(--total-header) + 25px);
+    left: 18px;
+  }
+
+  .cookie-icon {
+    font-size: 28px;
+  }
+}
+
+/* ===================================================
+   BODY MODES
+=================================================== */
+
+body.dark-mode {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+body.light-mode {
+  background: #ffffff;
+  color: #1f2937;
+}
+
+/* ===================================================
+   PREMIUM THEME SWITCH WITH SUNS & STARS
+=================================================== */
+
+.theme-switch {
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.switch-track {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* ===================================================
+   LIGHT MODE TRACK (SUNS)
+=================================================== */
+
+.theme-switch.light .switch-track {
+  background: linear-gradient(135deg, #dbeafe, #ffffff);
+  box-shadow:
+    inset 0 0 6px rgba(0, 0, 0, 0.08),
+    0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================================================
+   REAL REACT SUN ICONS (LIGHT MODE)
+=================================================== */
+
+.sun {
+  position: absolute;
+  color: #f59e0b;
+  opacity: 0.7;
+  animation: sunFloat 2.5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* Sun Positions */
+
+.sun.s1 {
+  top: 6px;
+  left: 33px;
+}
+
+.sun.s2 {
+  bottom: 6px;
+  left: 43px;
+  animation-delay: 0.6s;
+}
+
+.sun.s3 {
+  bottom: 3px;
+  left: 33px;
+  animation-delay: 1.2s;
+}
+
+/* ===================================================
+   DARK MODE TRACK (STARS)
+=================================================== */
+
+.theme-switch.dark .switch-track {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  box-shadow:
+    inset 0 0 6px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+/* ===================================================
+   THUMB
+=================================================== */
+
+.switch-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+/* MOVE THUMB */
+
+.theme-switch.dark .switch-thumb {
+  transform: translateX(30px);
+  background: #1e293b;
+  color: #22d3ee;
+}
+
+.theme-switch.light .switch-thumb {
+  transform: translateX(0px);
+  background: #ffffff;
+  color: #f59e0b;
+}
+
+/* ===================================================
+   ANIMATIONS
+=================================================== */
+
+/* Sun floating animation */
+
+@keyframes sunFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+/* ===================================================
+   REAL REACT ICON STARS (DARK MODE)
+=================================================== */
+
+.star {
+  position: absolute;
+  font-size: 8px;
+  color: white;
+  opacity: 0.7;
+  animation: starTwinkle 2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* STAR POSITIONS */
+
+.star.s1 {
+  top: 6px;
+  left: 14px;
+}
+
+.star.s2 {
+  bottom: 6px;
+  left: 10px;
+  animation-delay: 0.6s;
+}
+
+.star.s3 {
+  top: 10px;
+  right: 16px;
+  animation-delay: 1.2s;
+}
+
+/* Twinkle animation */
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+/* ===================================================
+   HEADER LIGHT MODE
+=================================================== */
+
+body.light-mode .cyber-header {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+}
+
+body.light-mode .cyber-logo {
+  color: #111;
+  text-shadow: none;
+  animation: none;
+}
+
+body.light-mode .cyber-nav a {
+  color: #333;
+}
+
+body.light-mode .cyber-nav a:hover {
+  color: #0ea5e9;
+}
+
+body.light-mode .cyber-nav a.active {
+  color: #0ea5e9;
+  font-weight: 600;
+}
+
+/* ===================================================
+   MOBILE NAV LIGHT MODE
+=================================================== */
+
+@media (max-width: 768px) {
+  body.light-mode .cyber-nav {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  body.light-mode .cyber-nav a {
+    color: #1f2937;
+  }
+
+  body.light-mode .cyber-nav a:hover {
+    color: #0ea5e9;
+  }
+}
+
+/* ================= LIGHT MODE FOR HERO SECTION ================= */
+
+body.light-mode .home-hero {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+}
+
+body.light-mode .scroll-btn {
+  color: #0f172a;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  background: rgba(255, 255, 255, 0.7);
+
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.05),
+    0 0 15px rgba(14, 165, 233, 0.15);
+}
+
+body.light-mode .hero-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .btn-secondary {
+  color: #0ea5e9;
+
+  border-color: #0ea5e9;
+
+  box-shadow: none;
+}
+
+/* ================= LIGHT MODE FOR SCROLLBEAM ================= */
+
+body.light-mode .beam-core {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #0ea5e9,
+    #38bdf8,
+    #9333ea,
+    #38bdf8,
+    #0ea5e9,
+    transparent
+  );
+
+  box-shadow:
+    0 0 6px rgba(14, 165, 233, 0.5),
+    0 0 14px rgba(147, 51, 234, 0.4);
+
+  animation: laserPulse 1.6s ease-in-out infinite;
+
+  backdrop-filter: none;
+}
+
+body.light-mode .scroll-beam {
+  background: transparent;
+}
+
+/* Force white main wrapper in light mode */
+body.light-mode .cyber-main,
+body.light-mode main,
+body.light-mode .main-cyber-main {
+  background: #ffffff;
+}
+
+/* ================= LIGHT MODE FOR WE SERVE FOR ================= */
+
+body.light-mode .orbit-section {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+}
+
+body.light-mode .orbit-hero h1 {
+  color: #111827;
+}
+
+body.light-mode .orbit-hero p {
+  color: #64748b;
+}
+
+body.light-mode .icon {
+  color: #0ea5e9;
+}
+
+body.light-mode .jump-icon:hover .icon {
+  color: #9333ea;
+}
+
+body.light-mode .jump-icon p {
+  color: #1e293b;
+}
+
+/* ================= LIGHT MODE FOR SERVICES ================= */
+
+body.light-mode .services-section {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+
+  color: #0f172a;
+}
+
+body.light-mode .services-header p {
+  color: #64748b;
+}
+
+body.light-mode .service-card {
+  background: rgba(255, 255, 255, 0.85);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .service-card {
+  animation: none;
+}
+
+body.light-mode .service-card h3 {
+  color: #0ea5e9;
+}
+
+body.light-mode .service-card p {
+  color: #475569;
+}
+
+body.light-mode .service-icon.holo {
+  box-shadow: 0 0 10px currentColor;
+}
+
+body.light-mode .why-card {
+  background: rgba(255, 255, 255, 0.85);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .why-header h1 {
+  color: #0f172a;
+}
+
+body.light-mode .why-header p {
+  color: #64748b;
+}
+
+body.light-mode .why-card p {
+  color: #111827;
+}
+
+body.light-mode .why-icon {
+  filter: drop-shadow(0 0 4px #0ea5e9);
+}
+
+/* ================= LIGHT MODE FOR INDUSTRIES ================= */
+
+body.light-mode .industries-section {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+}
+
+body.light-mode .industries-hero h1 {
+  color: #111827;
+}
+
+body.light-mode .industries-hero p {
+  color: #64748b;
+}
+
+body.light-mode .industry-item p {
+  color: #475569;
+}
+
+body.light-mode .industry-img-wrap::before {
+  opacity: 0.25; /* reduce glow */
+
+  filter: blur(12px);
+}
+
+body.light-mode .industry-item:hover .industry-img-wrap {
+  box-shadow:
+    0 0 15px rgba(14, 165, 233, 0.4),
+    0 0 30px rgba(147, 51, 234, 0.25);
+}
+
+/* ================= LIGHT MODE FOR RECENT PROJECTS ================= */
+
+body.light-mode .recent-projects-section {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+}
+
+body.light-mode .recent-hero h1 {
+  color: #111827;
+}
+
+body.light-mode .recent-hero p {
+  color: #64748b;
+}
+
+body.light-mode .project-card {
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .project-card:hover {
+  box-shadow: 0 12px 30px rgba(14, 165, 233, 0.25);
+}
+
+body.light-mode .project-card h3 {
+  color: #0f172a;
+}
+
+body.light-mode .project-date {
+  color: #64748b;
+}
+
+/* ================= LIGHT MODE FOR BLOGS ================= */
+
+body.light-mode .blog-section {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+
+  color: #0f172a;
+}
+
+body.light-mode .blog-header h1 {
+  color: #111827;
+}
+
+body.light-mode .blog-header p {
+  color: #64748b;
+}
+
+body.light-mode .blog-card {
+  background: rgba(255, 255, 255, 0.9);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .blog-card::before {
+  opacity: 0.3;
+}
+
+body.light-mode .blog-content h2 {
+  color: #0f172a;
+}
+
+body.light-mode .blog-desc {
+  color: #475569;
+}
+
+body.light-mode .read-more-btn {
+  color: #0ea5e9;
+
+  border-color: #0ea5e9;
+}
+
+body.light-mode .read-more-btn:hover {
+  color: #ffffff;
+}
+
+body.light-mode .featured-blog {
+  background: rgba(255, 255, 255, 0.9);
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .featured-content p {
+  color: #475569;
+}
+
+body.light-mode .featured-tag {
+  box-shadow: none;
+}
+
+/* ================= LIGHT MODE - PROJECTS WE DISCUSS ================= */
+
+body.light-mode .projects-discuss {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+  color: #0f172a;
+}
+
+/* HERO TEXT */
+
+body.light-mode .pd-hero h1 {
+  text-shadow: none;
+  color: #111827;
+}
+
+body.light-mode .pd-hero p {
+  color: #64748b;
+}
+
+/* CARDS */
+
+body.light-mode .pd-card {
+  background: rgba(255, 255, 255, 0.75);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  backdrop-filter: blur(18px);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .pd-card.glow {
+  box-shadow:
+    0 10px 30px rgba(14, 165, 233, 0.15),
+    0 10px 60px rgba(147, 51, 234, 0.08);
+}
+
+body.light-mode .pd-card h3 {
+  color: #0ea5e9;
+}
+
+body.light-mode .pd-card p {
+  color: #475569;
+}
+
+/* CTA SECTION */
+
+body.light-mode .pd-cta {
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .pd-cta h2 {
+  color: #0ea5e9;
+}
+
+body.light-mode .pd-cta p {
+  color: #475569;
+}
+
+/* BUTTON */
+
+body.light-mode .pd-cta a {
+  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.2);
+}
+
+/* ================= LIGHT MODE - TESTIMONIALS ================= */
+
+body.light-mode .testimonials-section {
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(14, 165, 233, 0.08),
+    transparent 60%
+  );
+}
+
+/* HERO */
+
+body.light-mode .testimonials-hero h1 {
+  color: #111827;
+}
+
+body.light-mode .testimonials-hero p {
+  color: #64748b;
+}
+
+/* CARDS */
+
+body.light-mode .testimonial-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.85),
+    rgba(248, 250, 252, 0.9)
+  );
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  backdrop-filter: blur(18px);
+}
+
+body.light-mode .testimonial-card:hover {
+  box-shadow: 0 14px 40px rgba(14, 165, 233, 0.18);
+}
+
+/* TEXT */
+
+body.light-mode .testimonial-text {
+  color: #374151;
+}
+
+body.light-mode .testimonial-card span {
+  color: #64748b;
+}
+
+body.light-mode .testimonial-card h3 {
+  color: #0ea5e9;
+}
+
+/* AVATAR GLOW softer for light */
+
+body.light-mode .testimonial-avatar {
+  box-shadow:
+    0 0 8px rgba(14, 165, 233, 0.3),
+    0 0 16px rgba(147, 51, 234, 0.2);
+}
+
+/* FLOATING AURA softer */
+
+body.light-mode .testimonial-glow {
+  background: radial-gradient(
+    circle,
+    rgba(14, 165, 233, 0.12),
+    transparent 70%
+  );
+}
+
+/* ================= LIGHT MODE - TECHNOLOGY SECTION ================= */
+
+body.light-mode .tech-section {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+
+  color: #0f172a;
+}
+
+/* HERO TITLE */
+
+body.light-mode .tech-hero h1 {
+  color: #111827;
+}
+
+/* HERO PARAGRAPH */
+
+body.light-mode .tech-hero p {
+  color: #64748b;
+}
+
+/* Accent color stays but slightly refined */
+
+body.light-mode .tech-hero span {
+  color: #0ea5e9;
+}
+
+body.light-mode .tech-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(14, 165, 233, 0.08),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* ================= LIGHT MODE - CLIENT MARQUEE ================= */
+
+body.light-mode .clients-marquee::before {
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+body.light-mode .clients-marquee::after {
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+/* CARD STYLE */
+
+body.light-mode .marquee-item {
+  background: rgba(255, 255, 255, 0.8);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  color: #0ea5e9;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  backdrop-filter: blur(16px);
+}
+
+body.light-mode .marquee-item:hover {
+  box-shadow: 0 10px 35px rgba(14, 165, 233, 0.2);
+}
+
+/* LOGO GLOW softer for white background */
+
+body.light-mode .marquee-item img {
+  filter: drop-shadow(0 0 4px rgba(14, 165, 233, 0.35));
+}
+
+/* ================= LIGHT MODE - FOOTER ================= */
+
+body.light-mode .cyber-footer {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), #ffffff);
+
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* glowing animated line (softer for white background) */
+
+body.light-mode .footer-glow-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #0ea5e9,
+    #9333ea,
+    #0ea5e9,
+    transparent
+  );
+}
+
+/* content text */
+
+body.light-mode .footer-content {
+  color: #374151;
+}
+
+body.light-mode .footer-content span {
+  color: #0ea5e9;
+  text-shadow: none;
+}
+
+body.light-mode .footer-tagline {
+  color: #64748b;
+}
+
+/* ================= LIGHT MODE - ABOUT PAGE ================= */
+
+body.light-mode .about2 {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+  color: #0f172a;
+}
+
+/* HERO TEXT */
+
+body.light-mode .about2-left h1 {
+  text-shadow: none;
+  color: #111827;
+}
+
+body.light-mode .about2-left p {
+  color: #64748b;
+}
+
+/* STATS CARDS */
+
+body.light-mode .about2-stats div {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .about2-stats span {
+  color: #64748b;
+}
+
+/* MAIN CARDS */
+
+body.light-mode .a2-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .a2-card h3 {
+  color: #0ea5e9;
+}
+
+body.light-mode .a2-card p {
+  color: #475569;
+}
+
+/* ICON glow softer */
+
+body.light-mode .a2-icon {
+  filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.4));
+}
+
+/* LEADER SECTION */
+
+body.light-mode .leader-header h1 {
+  color: #111827;
+}
+
+body.light-mode .leader-header p {
+  color: #64748b;
+}
+
+body.light-mode .leader-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .leader-card h3 {
+  color: #0ea5e9;
+}
+
+body.light-mode .leader-card p {
+  color: #475569;
+}
+
+body.light-mode .leader-icon {
+  filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.4));
+}
+
+/* CTA SECTION */
+
+body.light-mode .cta-glass {
+  background:
+    radial-gradient(circle at top, rgba(14, 165, 233, 0.12), transparent 60%),
+    rgba(255, 255, 255, 0.95);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .cta-glass h1 {
+  color: #111827;
+}
+
+body.light-mode .cta-glass p {
+  color: #475569;
+}
+
+body.light-mode .cta-glass h1 span {
+  text-shadow: none;
+  color: #0ea5e9;
+}
+
+/* ================= LIGHT MODE - CAREER PAGE ================= */
+
+body.light-mode .career-section {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+  color: #111827;
+}
+
+/* HERO */
+
+body.light-mode .career-hero h1 {
+  text-shadow: none;
+  color: #111827;
+}
+
+body.light-mode .career-hero p {
+  color: #64748b;
+}
+
+/* HIGHLIGHT CARDS */
+
+body.light-mode .highlight-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .highlight-card h3 {
+  color: #0ea5e9;
+}
+
+body.light-mode .highlight-card p {
+  color: #475569;
+}
+
+/* ICON glow softer */
+
+body.light-mode .career-icon {
+  filter: drop-shadow(0 0 5px rgba(14, 165, 233, 0.4));
+}
+
+/* JOB CARDS */
+
+body.light-mode .job-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .job-card h3 {
+  color: #111827;
+}
+
+body.light-mode .job-card p {
+  color: #475569;
+}
+
+body.light-mode .job-card span {
+  color: #0ea5e9;
+}
+
+/* TITLE */
+
+body.light-mode .career-title {
+  text-shadow: none;
+  color: #0ea5e9;
+}
+
+/* PIPELINE SECTION */
+
+body.light-mode .pipeline-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .pipeline-card h3 {
+  color: #0ea5e9;
+}
+
+body.light-mode .pipeline-card p {
+  color: #475569;
+}
+
+/* pipeline glowing core softer */
+
+body.light-mode .pipeline-core {
+  background: radial-gradient(circle, #0ea5e9, #ffffff);
+  box-shadow:
+    0 0 10px rgba(14, 165, 233, 0.5),
+    0 0 25px rgba(14, 165, 233, 0.3);
+}
+
+/* connector line softer */
+
+body.light-mode .pipeline-card::after {
+  box-shadow: 0 0 6px rgba(14, 165, 233, 0.4);
+}
+
+/* ================= LIGHT MODE - CONTACT PAGE ================= */
+
+body.light-mode .contact-section {
+  background: radial-gradient(circle at top, #f8fafc, #ffffff);
+  color: #111827;
+}
+
+/* HEADER */
+
+body.light-mode .contact-header h1 {
+  text-shadow: none;
+  color: #111827;
+}
+
+body.light-mode .contact-header p {
+  color: #64748b;
+}
+
+/* ================= FORM CARD ================= */
+
+body.light-mode .contact-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* INPUTS */
+
+body.light-mode .form-group label {
+  color: #475569;
+}
+
+body.light-mode .form-group input,
+body.light-mode .form-group textarea {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .form-group input::placeholder,
+body.light-mode .form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* focus glow softer */
+
+body.light-mode .form-group input:focus,
+body.light-mode .form-group textarea:focus {
+  box-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
+}
+
+/* ================= INFO CARDS ================= */
+
+body.light-mode .info-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .info-card h2 {
+  color: #0ea5e9;
+}
+
+body.light-mode .info-card p {
+  color: #475569;
+}
+
+/* ================= SUCCESS OVERLAY ================= */
+
+body.light-mode .success-overlay {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-mode .success-box {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .success-box p {
+  color: #475569;
+}
+
+/* ================= MAP CARD ================= */
+
+body.light-mode .map-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* map normal colors in light mode */
+
+body.light-mode .map-card iframe {
+  filter: none;
+}
+
+/* ================= LIGHT MODE - SOCIAL MINI ================= */
+
+body.light-mode .social-mini h3 {
+  color: #0ea5e9;
+  text-shadow: none;
+}
+
+/* icon button */
+
+body.light-mode .s-icon {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #374151; /* default icon color */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* hover softer glow */
+
+body.light-mode .s-icon:hover {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 0 18px currentColor;
+}
+
+/* ================= LIGHT MODE - BLOG ARTICLE PAGE ================= */
+
+body.light-mode .blog-article-page {
+  background: #ffffff;
+  color: #1f2937;
+}
+
+/* Title stays accent color */
+body.light-mode .blog-title {
+  color: #0ea5e9;
+}
+
+/* Author */
+body.light-mode .blog-author {
+  color: #64748b;
+}
+
+/* Headings */
+body.light-mode .blog-article h2 {
+  color: #0ea5e9;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Paragraph text */
+body.light-mode .blog-article p,
+body.light-mode .blog-article li {
+  color: #374151;
+}
+
+/* Tip highlight */
+body.light-mode .tip {
+  color: #0ea5e9;
+}
+
+/* ===== TABLE ===== */
+
+body.light-mode .blog-table th,
+body.light-mode .blog-table td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .blog-table th {
+  background: rgba(14, 165, 233, 0.08);
+}
+
+/* ================= LIGHT MODE - OPEN POSITIONs ================= */
+
+.light-mode .apply-modal {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.light-mode .apply-form {
+  background: rgba(255, 255, 255, 0.65);
+  color: #1a1a1a;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.15),
+    0 0 18px rgba(34, 211, 238, 0.25);
+}
+
+/* inner layer */
+
+.light-mode .apply-form::after {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* title */
+
+.light-mode .apply-form h2 {
+  color: #0ea5e9;
+}
+
+/* inputs */
+
+.light-mode .apply-form input,
+.light-mode .apply-form textarea {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #222;
+}
+
+/* input focus */
+
+.light-mode .apply-form input:focus,
+.light-mode .apply-form textarea:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+}
+
+/* close button */
+
+.light-mode .close-btn {
+  background: rgba(255, 255, 255, 0.6);
+  color: #222;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* submit button */
+
+.light-mode .submit-btn {
+  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
+  color: #fff;
+}
+
+.light-mode .upload-btn {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  background: rgba(255, 255, 255, 0.7);
+
+  backdrop-filter: blur(6px);
+
+  color: #1a1a1a;
+
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.15);
+}
+
+/* HOVER EFFECT */
+
+.light-mode .upload-btn:hover {
+  transform: translateY(-2px);
+
+  background: linear-gradient(135deg, #22d3ee, #3b82f6);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 0 12px rgba(34, 211, 238, 0.6),
+    0 0 20px rgba(34, 211, 238, 0.35);
+}
+
+/* FILE NAME */
+
+.light-mode .file-name {
+  color: #0ea5e9;
+}

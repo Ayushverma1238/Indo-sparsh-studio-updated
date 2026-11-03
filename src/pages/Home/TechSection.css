@@ -1,0 +1,137 @@
+
+/* =========================================================
+   TECHNOLOGY SECTION
+   ========================================================= */
+
+.tech-section {
+  padding: 80px 100px;
+  color: white;
+  overflow: hidden;
+}
+
+/* ================= TECHNOLOGY HERO ================= */
+
+.tech-hero {
+  max-width: 850px;
+  margin: 0 auto 60px;
+  text-align: center;
+
+  animation: fadeUp 1s ease forwards;
+}
+
+.tech-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.tech-hero span {
+  color: #22d3ee;
+}
+
+.tech-hero p {
+  color: #94a3b8;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   TECHNOLOGY MARQUEE
+   ========================================================= */
+
+.clients-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  padding: 20px 0;
+}
+
+
+/* ================= MARQUEE TRACK ================= */
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+
+  gap: 40px;
+
+  width: max-content;
+
+  animation: marquee 25s linear infinite;
+
+  will-change: transform;
+}
+
+
+/* ================= TECHNOLOGY ITEM ================= */
+
+.marquee-item-tc {
+  flex: 0 0 auto;
+
+  width: 140px;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(34, 211, 238, 0.2);
+
+  border-radius: 20px;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+
+/* ================= TECHNOLOGY IMAGE ================= */
+
+.marquee-item-tc img {
+  width: 70px;
+  height: 60px;
+
+  object-fit: contain;
+
+  display: block;
+
+  transition: transform 0.3s ease;
+}
+
+
+/* ================= TECHNOLOGY HOVER ================= */
+
+.marquee-item-tc:hover {
+  transform: translateY(-8px) scale(1.05);
+
+  border-color: #22d3ee;
+
+  background: rgba(34, 211, 238, 0.06);
+
+}
+
+.marquee-item-tc:hover img {
+  transform: scale(1.08);
+}
+
+
+/* ================= MARQUEE ANIMATION ================= */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+

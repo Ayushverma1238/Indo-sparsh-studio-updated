@@ -1,0 +1,123 @@
+/* ================= RECENT PROJECTS ================= */
+
+.recent-projects-section {
+  padding: 120px 0;
+  background: #020617;
+  overflow: hidden;
+}
+
+.recent-hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.recent-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 20px;
+}
+
+.recent-hero span {
+  color: #22d3ee;
+}
+
+.recent-hero p {
+  color: #94a3b8;
+}
+
+/* MARQUEE CONTAINER */
+
+.projects-marquee {
+  overflow: hidden;
+  padding: 10px 0;
+  position: relative;
+}
+
+/* TRACK */
+
+.projects-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+
+  animation: marqueeMove 22s linear infinite;
+}
+
+/* PAUSE on hover (premium feel) */
+
+.projects-marquee:hover .projects-track {
+  animation-play-state: paused;
+}
+
+/* CARD */
+
+.project-card-home {
+  width: 300px;
+  flex-shrink: 0;
+  background: #020617;
+  border-radius: 24px;
+  padding: 20px;
+  border: 1px solid rgba(18, 212, 241, 0.5);
+  text-align: center;
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+  transition: 0.3s;
+}
+
+.project-card-home:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
+}
+
+/* .project-img {
+  height: 160px;
+  background: #1e293b;
+  border-radius: 10px;
+  margin-bottom: 15px;
+} */
+
+.project-img {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-date {
+  display: block;
+  margin: 10px 0;
+  color: #94a3b8;
+}
+
+.project-card-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #22d3ee, #a855f7);
+  color: black;
+  font-weight: 600;
+}
+
+/* LEFT MOVING ANIMATION */
+
+@keyframes marqueeMove {
+  0% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(-50%);
+  }
+  85% {
+    transform: translateX(-50%); /* small pause */
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.main-services-btn {
+  position: absolute;
+  bottom: 0;
+}

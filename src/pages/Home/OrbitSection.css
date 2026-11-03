@@ -1,0 +1,127 @@
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.orbit-section {
+  padding: 120px 20px;
+  background: radial-gradient(circle at top, #020617, #000);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* =====================================================
+   HERO TEXT
+===================================================== */
+
+.orbit-hero {
+  margin-bottom: 60px;
+}
+
+.orbit-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.orbit-hero span {
+  color: #22d3ee;
+}
+
+.orbit-hero p {
+  color: #94a3b8;
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   ICON CONTAINER
+===================================================== */
+
+.jump-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  margin-top: 80px;
+  flex-wrap: wrap;
+}
+
+/* =====================================================
+   ICON WRAPPER
+===================================================== */
+
+.jump-icon {
+  text-align: center;
+  cursor: pointer;
+}
+
+/* =====================================================
+   ICON DESIGN (ONLY LARGE ICON - NO CIRCLE)
+===================================================== */
+
+.icon {
+  font-size: 80px; /* BIG ICON */
+  color: #22d3ee;
+  transition: all 0.3s ease;
+}
+
+/* CLEAN PREMIUM HOVER */
+
+.jump-icon:hover .icon {
+  transform: translateY(-6px) scale(1.1);
+  color: #a855f7;
+}
+
+/* =====================================================
+   TEXT UNDER ICON
+===================================================== */
+
+.jump-icon p {
+  margin-top: 16px;
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 1024px) {
+  .jump-container {
+    gap: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .orbit-section {
+    padding: 80px 15px;
+  }
+
+  .jump-container {
+    gap: 50px;
+    margin-top: 60px;
+  }
+
+  .icon {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .jump-container {
+    gap: 30px;
+  }
+
+  .icon {
+    font-size: 50px;
+  }
+
+  .orbit-hero h1 {
+    letter-spacing: 1px;
+  }
+}

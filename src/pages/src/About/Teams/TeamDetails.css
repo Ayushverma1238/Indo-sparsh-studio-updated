@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap');
+
+/* ===================================================================
+   THEME TOKENS - restrained, corporate
+   Driven by body.dark-mode / body.light-mode set elsewhere in the app.
+=================================================================== */
+
+.tm {
+  --paper: #f6f6f4;
+  --paper-raised: #ffffff;
+  --ink: #171b24;
+  --ink-soft: #565d6b;
+  --ink-faint: #9096a1;
+  --line: rgba(23, 27, 36, 0.10);
+  --line-strong: rgba(23, 27, 36, 0.22);
+  --accent: #223a63;         /* deep navy */
+  --accent-soft: rgba(34, 58, 99, 0.08);
+  --shadow: rgba(23, 27, 36, 0.10);
+
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  background: var(--paper);
+  padding: 88px 0 104px;
+  overflow: hidden;
+  transition: background 0.4s ease;
+}
+
+body.dark-mode .tm {
+  --paper: #010816;
+  --paper-raised: #060d1b;
+  --ink: #f2f3f5;
+  --ink-soft: #a8adb8;
+  --ink-faint: #656b78;
+  --line: rgba(242, 243, 245, 0.10);
+  --line-strong: rgba(241, 241, 243, 0.6);
+  --accent: #7f9cd6;         /* muted steel blue */
+  --accent-soft: rgba(127, 156, 214, 0.10);
+  --shadow: rgba(63, 59, 59, 0.45);
+}
+
+.tm * {
+  box-sizing: border-box;
+}
+
+/* ===================================================================
+   HEADING
+=================================================================== */
+
+.tm-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.tm-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  color: var(--ink);
+  text-align: center;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+/* ===================================================================
+   MARQUEE
+=================================================================== */
+
+.tm-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+}
+
+.tm-track {
+  display: flex;
+  width: max-content;
+  gap: 24px;
+  padding: 12px 4px 28px;
+  /* content is duplicated once in JSX, so a full 50% translate is one
+     seamless loop */
+  animation: tm-scroll 36s linear infinite;
+}
+
+.tm-marquee:hover .tm-track {
+  animation-play-state: paused;
+}
+
+@keyframes tm-scroll {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tm-track {
+    animation: none;
+  }
+}
+
+/* ===================================================================
+   CARD
+=================================================================== */
+
+.tm-card {
+  flex: 0 0 auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 30px 26px 26px;
+  box-shadow: 0 1px 2px var(--shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.tm-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px var(--shadow);
+  border-color: var(--line-strong);
+}
+
+.profile-header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.tm-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  margin-bottom: 16px;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.tm-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin: 0 0 4px;
+  text-align: center;
+}
+
+/* ===================================================================
+   DETAILS
+=================================================================== */
+
+.tm-role {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin: 0 0 4px;
+  text-align: center;
+}
+
+.tm-study {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  color: var(--ink-faint);
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+.tm-bio {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  width: 100%;
+}
+
+.tm-focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tm-focus li {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  background: var(--accent-soft);
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+@media (max-width: 560px) {
+  .tm-card {
+    width: 250px;
+    padding: 26px 20px 22px;
+  }
+
+  .tm-avatar {
+    width: 80px;
+    height: 80px;
+  }
+}
