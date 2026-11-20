@@ -1,0 +1,242 @@
+/* =====================================================
+   HOME · OUR SERVICES: two alternating marquee rows
+   Row 1 runs left, row 2 runs right. Hovering or touching
+   a card lights it and pauses its row.
+===================================================== */
+
+.svr-section {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 110px;
+  background: #020617;
+  color: #e2e8f0;
+}
+
+/* ================= HEADER ================= */
+
+.svr-header {
+  max-width: 760px;
+  margin: 0 auto 56px;
+  padding: 0 6%;
+  text-align: center;
+}
+
+.svr-kicker {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #22d3ee;
+}
+
+.svr-header h2 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: 2px;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.svr-header h2 span {
+  color: #22d3ee;
+}
+
+.svr-header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.7;
+}
+
+/* ================= ROWS ================= */
+
+/* Vertical padding leaves room for the lifted card's shadow inside the clip */
+.svr-row {
+  padding: 28px 0;
+}
+
+.svr-track {
+  align-items: stretch;
+}
+
+/* ================= CARD ================= */
+
+.svr-card {
+  position: relative;
+  width: clamp(260px, 24vw, 320px);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 24px 24px;
+  border-radius: 20px;
+  background: linear-gradient(
+    165deg,
+    rgba(15, 23, 42, 0.94),
+    rgba(2, 6, 23, 0.98)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+.svr-card.is-lit,
+.svr-card:focus-within {
+  transform: translateY(-8px);
+  border-color: rgba(34, 211, 238, 0.6);
+  background: linear-gradient(
+    165deg,
+    rgba(15, 23, 42, 0.98),
+    rgba(30, 27, 75, 0.9)
+  );
+  box-shadow:
+    0 22px 44px rgba(0, 0, 0, 0.45),
+    0 0 34px rgba(34, 211, 238, 0.22);
+}
+
+@media (hover: hover) {
+  .svr-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(34, 211, 238, 0.6);
+    background: linear-gradient(
+      165deg,
+      rgba(15, 23, 42, 0.98),
+      rgba(30, 27, 75, 0.9)
+    );
+    box-shadow:
+      0 22px 44px rgba(0, 0, 0, 0.45),
+      0 0 34px rgba(34, 211, 238, 0.22);
+  }
+}
+
+.svr-icon {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  font-size: 22px;
+  color: #22d3ee;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.18),
+    rgba(168, 85, 247, 0.2)
+  );
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  box-shadow: inset 0 0 18px rgba(34, 211, 238, 0.12);
+  transition: transform 0.4s ease;
+}
+
+.svr-card.is-lit .svr-icon,
+.svr-card:focus-within .svr-icon {
+  transform: scale(1.06) rotate(-4deg);
+}
+
+@media (hover: hover) {
+  .svr-card:hover .svr-icon {
+    transform: scale(1.06) rotate(-4deg);
+  }
+}
+
+.svr-title {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.3;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+}
+
+.svr-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  overflow-wrap: anywhere;
+}
+
+.svr-btn {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  background: rgba(34, 211, 238, 0.06);
+  color: #22d3ee;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.svr-card.is-lit .svr-btn,
+.svr-card:focus-within .svr-btn {
+  background: linear-gradient(135deg, #22d3ee, #a855f7);
+  color: #020617;
+  border-color: transparent;
+}
+
+@media (hover: hover) {
+  .svr-card:hover .svr-btn {
+    background: linear-gradient(135deg, #22d3ee, #a855f7);
+    color: #020617;
+    border-color: transparent;
+  }
+}
+
+.svr-btn:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 3px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 640px) {
+  .svr-section {
+    padding: 90px 0 80px;
+  }
+
+  .svr-header {
+    margin-bottom: 36px;
+  }
+
+  .svr-card {
+    width: 262px;
+    padding: 22px 20px 20px;
+    gap: 12px;
+  }
+
+  .svr-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 19px;
+  }
+
+  .svr-title {
+    font-size: 1rem;
+  }
+
+  .svr-text {
+    font-size: 0.86rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svr-card,
+  .svr-icon,
+  .svr-btn {
+    transition: none;
+  }
+}

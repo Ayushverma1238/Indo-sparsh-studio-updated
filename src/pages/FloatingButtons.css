@@ -1,0 +1,129 @@
+/* ================= CALL FLOAT BUTTON ================= */
+
+.call-float {
+  position: fixed;
+  left: 26px;
+  bottom: 135px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  z-index: 999999;
+
+  /* 🎯 CYAN CALL THEME */
+  background: radial-gradient(circle at top, #38bdf8, #0ea5e9 45%, #020617);
+
+  box-shadow:
+    0 0 12px rgba(56, 189, 248, 0.85),
+    0 0 30px rgba(56, 189, 248, 0.6),
+    0 0 60px rgba(56, 189, 248, 0.4);
+
+  animation: callPulse 2.4s ease-in-out infinite;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ICON */
+.call-icon {
+  font-size: 26px;
+  color: #ffffff;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.85));
+  animation: phoneFloat 2s ease-in-out infinite;
+  pointer-events: none; /* icon should not block parent */
+}
+
+/* glowing ring */
+.call-float::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(56, 189, 248, 0.8);
+  filter: blur(2px);
+  animation: callRing 2.4s ease-out infinite;
+}
+
+/* hover */
+.call-float:hover {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 25px rgba(56, 189, 248, 1),
+    0 0 70px rgba(56, 189, 248, 0.9);
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes callPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes phoneFloat {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(12deg);
+  }
+  75% {
+    transform: rotate(-12deg);
+  }
+}
+
+@keyframes callRing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .call-float {
+    width: 56px;
+    height: 56px;
+    left: 30px;
+    bottom: 120px;
+  }
+
+
+}
+
+
+/* 📱 MOBILE */
+@media (max-width: 480px) {
+  .call-float {
+    width: 56px;
+    height: 56px;
+    bottom: 110px;
+    left: 18px;
+  }
+
+  .call-icon {
+    font-size: 28px;
+  }
+}
+
+
+.chatbot-call{
+  display: inline-block;
+}
+
+@media (max-width:550px) {
+  .chatbot-call{
+    display: none;
+  }
+}

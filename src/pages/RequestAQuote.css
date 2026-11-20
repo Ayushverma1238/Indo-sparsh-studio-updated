@@ -1,0 +1,731 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ================= SECTION ================= */
+
+.contact-section-quote {
+  min-height: 100vh;
+  padding: 100px 8%;
+  background: transparent;
+  color: white;
+  display: grid;
+  grid-template-columns: 1.2fr;
+  grid-template-areas:
+    "header"
+    "form";
+  gap: 35px;
+}
+
+/* ================= HEADER ================= */
+
+.contact-header-quote {
+  grid-area: header;
+  max-width: 850px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.contact-header-quote h1 {
+  font-size: clamp(2.2rem, 5vw, 3.3rem);
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+  text-shadow:
+    0 0 20px #22d3ee,
+    0 0 40px rgba(34, 211, 238, 0.4);
+}
+
+.contact-header-quote span {
+  color: #22d3ee;
+}
+
+.contact-header-quote p {
+  color: #94a3b8;
+  line-height: 1.8;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+/* ================= FORM CARD ================= */
+
+.contact-card-quote {
+  grid-area: form;
+  background: rgba(2, 6, 23, 0.88);
+  border-radius: 24px;
+  padding: 50px 40px;
+  margin: 0 auto;
+  width: 60vw;
+  max-width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  backdrop-filter: blur(14px);
+  animation: rgbGlow 8s ease-in-out infinite;
+  box-shadow:
+    0 0 35px rgba(34, 211, 238, 0.25),
+    inset 0 0 20px rgba(34, 211, 238, 0.05);
+}
+
+/* ================= FORM ================= */
+
+.contact-form-quote {
+  width: 95%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  /* FIX: prevents content-based track blowout so both columns stay equal width */
+  min-width: 0;
+}
+
+/* FIX: stops any single grid item's intrinsic content width
+   from forcing its column wider than its sibling column */
+.contact-form-quote > * {
+  min-width: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  /* FIX: same blowout protection for nested First/Last name row */
+  min-width: 0;
+}
+
+.form-row > * {
+  min-width: 0;
+}
+
+.form-group-quote {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* FIX: flex children also need this to respect parent grid track width */
+  min-width: 0;
+}
+
+.form-group-quote label {
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  color: #cbd5f5;
+}
+
+.form-group-quote input,
+.form-group-quote textarea,
+.select-box {
+  background: rgba(2, 6, 23, 0.9);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 14px;
+  padding: 14px 14px;
+
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  transition: 0.3s ease;
+  /* FIX: force fields to always fill their column instead of their content size */
+  width: 100%;
+  min-width: 0;
+}
+
+.form-group-quote textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+/* RGB focus glow */
+.form-group-quote input:focus,
+.form-group-quote textarea:focus,
+.select-box:focus {
+  border-color: transparent;
+  animation: rgbGlow 3s linear infinite;
+}
+
+.select-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Align inputs when label is missing */
+.form-row .form-group-quote {
+  position: relative;
+}
+
+/* If a form-group-quote has NO label, push input down */
+.form-row .form-group-quote:not(:has(label)) input {
+  margin-top: 22px; /* match label + gap height */
+}
+
+/* ================= BUTTON ================= */
+
+.contact-btn {
+  margin-top: 10px;
+  align-self: flex-start;
+  padding: 14px 40px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(135deg, #22d3ee, #a855f7);
+  color: black;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  animation: rgbGlow 6s ease-in-out infinite;
+  transition: 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: scale(1.1);
+  animation: rgbGlow 2s linear infinite;
+}
+
+/* ================= INFO CARDS ================= */
+
+.info-card {
+  background: rgba(2, 6, 23, 0.88);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 22px;
+  padding: 32px 28px;
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.12);
+  transition: 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(34, 211, 238, 0.18),
+    transparent
+  );
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.info-card:hover::before {
+  opacity: 1;
+}
+
+.info-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 45px rgba(34, 211, 238, 0.35);
+}
+
+.info-card h2 {
+  margin-bottom: 12px;
+  color: #22d3ee;
+  letter-spacing: 1.5px;
+}
+
+.info-card p {
+  color: #cbd5f5;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.info-highlight {
+  color: #22d3ee;
+}
+
+.info-card span {
+  color: #22d3ee;
+}
+
+.closed {
+  color: #f87171;
+}
+
+/* ================= RGB GLOW ================= */
+
+@keyframes rgbGlow {
+  0% {
+    box-shadow:
+      0 0 15px #22d3ee,
+      0 0 40px rgba(34, 211, 238, 0.6);
+  }
+  33% {
+    box-shadow:
+      0 0 18px #a855f7,
+      0 0 45px rgba(168, 85, 247, 0.6);
+  }
+  66% {
+    box-shadow:
+      0 0 18px #ec4899,
+      0 0 45px rgba(236, 72, 153, 0.6);
+  }
+  100% {
+    box-shadow:
+      0 0 15px #22d3ee,
+      0 0 40px rgba(34, 211, 238, 0.6);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .contact-section-quote {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "form"
+    
+  }
+  .contact-card-quote{
+    width: 100%;
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 635px) {
+  .contact-form-quote {
+    gap: 14px; /* was 22px */
+    width: 100%;
+    padding: 5px;
+    grid-template-columns: 1fr;
+  }
+
+  .form-group-quote input,
+  .form-group-quote textarea,
+  .select-box {
+    width: 80%;
+  }
+  .contact-section-quote {
+    padding: 80px 6%;
+  }
+
+  .contact-card-quote {
+    padding: 35px 22px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 12px; /* reduce space between First & Last name */
+  }
+
+  .form-group-quote {
+    gap: 6px;
+  }
+
+  /* REMOVE artificial spacing on mobile */
+  .form-row .form-group-quote:not(:has(label)) input {
+    margin-top: 0;
+  }
+
+  .contact-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ================= SUCCESS ANIMATION ================= */
+
+.success-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease forwards;
+  z-index: 10;
+}
+
+.success-box {
+  background: rgba(2, 6, 23, 0.9);
+  border-radius: 22px;
+  padding: 45px 50px;
+  text-align: center;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  box-shadow:
+    0 0 30px rgba(34, 211, 238, 0.35),
+    0 0 80px rgba(168, 85, 247, 0.25);
+  animation: popUp 0.5s ease forwards;
+}
+
+.success-check {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: black;
+  background: linear-gradient(135deg, #22d3ee, #a855f7);
+  box-shadow:
+    0 0 25px #22d3ee,
+    0 0 60px #22d3ee;
+  animation: checkPulse 1.2s ease infinite;
+}
+
+.success-box h2 {
+  margin-bottom: 10px;
+  color: #22d3ee;
+  letter-spacing: 2px;
+}
+
+.success-box p {
+  color: #cbd5f5;
+  font-size: 0.95rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes checkPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px #22d3ee;
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 50px #22d3ee;
+  }
+}
+
+/* ================= MAP CARD ================= */
+
+.map-card {
+  grid-column: 1 / -1; /* full width */
+  background: rgba(2, 6, 23, 0.88);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 24px;
+  padding: 12px;
+  margin-top: 30px;
+  box-shadow:
+    0 0 30px rgba(34, 211, 238, 0.2),
+    0 0 80px rgba(168, 85, 247, 0.15);
+  overflow: hidden;
+  position: relative;
+  transition: 0.4s ease;
+}
+
+.map-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(34, 211, 238, 0.18),
+    transparent
+  );
+  opacity: 0;
+  transition: 0.4s;
+  pointer-events: none;
+}
+
+.map-card:hover::before {
+  opacity: 1;
+}
+
+.map-card:hover {
+  transform: scale(1.01);
+  box-shadow:
+    0 0 45px rgba(34, 211, 238, 0.4),
+    0 0 120px rgba(168, 85, 247, 0.25);
+}
+
+.map-card iframe {
+  width: 100%;
+  height: 420px;
+  border-radius: 18px;
+  filter: grayscale(100%) contrast(1.1) brightness(0.9);
+  transition: 0.5s ease;
+}
+
+/* Cyber effect on hover */
+.map-card:hover iframe {
+  filter: grayscale(0%) contrast(1.2) brightness(1);
+}
+
+/* ================= RESPONSIVE MAP ================= */
+
+@media (max-width: 768px) {
+  .map-card iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-card iframe {
+    height: 240px;
+  }
+}
+
+/* ================= EXTRA RESPONSIVE POLISH ================= */
+
+/* Very large screens */
+@media (min-width: 1400px) {
+  .contact-section-quote {
+    max-width: 1400px;
+    margin: auto;
+    column-gap: 60px;
+  }
+
+  .contact-card-quote {
+    padding: 60px 60px;
+  }
+}
+
+/* Tablets landscape */
+@media (max-width: 1024px) {
+  .contact-section-quote {
+    padding: 90px 6%;
+    gap: 28px;
+  }
+
+  .contact-card-quote {
+    padding: 40px 30px;
+  }
+
+  .info-card {
+    padding: 28px 24px;
+  }
+}
+
+/* Tablets portrait & large phones */
+@media (max-width: 820px) {
+  .contact-header-quote {
+    margin-bottom: 10px;
+  }
+
+  .contact-header-quote p {
+    font-size: 0.95rem;
+  }
+
+  .contact-btn {
+    width: 100%;
+  }
+}
+
+/* Normal phones */
+@media (max-width: 600px) {
+  .contact-header-quote h1 {
+    letter-spacing: 2px;
+  }
+
+  .contact-form-quote {
+    gap: 18px;
+    padding: 5px;
+  }
+
+  .contact-card-quote {
+    padding: 20px auto;
+  }
+
+  .form-group-quote input,
+  .form-group-quote textarea,
+  .select-box {
+    padding: 12px;
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .success-box {
+    width: 90%;
+    padding: 35px 22px;
+  }
+
+  .success-check {
+    width: 70px;
+    height: 70px;
+    font-size: 2.2rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .contact-section-quote {
+    padding: 65px 5%;
+  }
+
+  .contact-header-quote h1 {
+    font-size: 1.9rem;
+  }
+
+  .contact-form-quote {
+    padding: 10px;
+  }
+
+  .info-card h2 {
+    font-size: 1rem;
+  }
+
+  .info-card p {
+    font-size: 0.82rem;
+  }
+
+  .contact-btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+
+  .map-card iframe {
+    height: 200px;
+  }
+}
+
+/* Fix success overlay positioning */
+.contact-card-quote {
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .contact-section-quote {
+    padding: 70px 6% 90px;
+  }
+}
+
+.select-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+
+  width: 90%;
+  margin: 0 auto;
+    z-index: 10000;
+  border-radius: 15px;
+  padding: 15px 20px;
+  background: rgba(5, 10, 36, 0.9);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  max-height: 400px;
+  overflow-y: auto;
+  transition: 0.3s ease;
+}
+
+.select-item span:hover{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+
+/* ================= LIGHT THEME OVERRIDES ================= */
+/* Matches: document.body.classList.add("light-mode") / "dark-mode" */
+
+body.light-mode .contact-section-quote {
+  color: #0f172a;
+}
+
+body.light-mode .contact-header-quote h1 {
+  text-shadow:
+    0 0 14px rgba(34, 211, 238, 0.45),
+    0 0 28px rgba(34, 211, 238, 0.2);
+}
+
+body.light-mode .contact-header-quote p {
+  color: #475569;
+}
+
+body.light-mode .contact-card-quote {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  box-shadow:
+    0 0 25px rgba(34, 211, 238, 0.15),
+    inset 0 0 15px rgba(34, 211, 238, 0.04);
+}
+
+body.light-mode .form-group-quote label {
+  color: #151c27;
+  font-weight: 600;
+}
+
+body.light-mode .form-group-quote input,
+body.light-mode .form-group-quote textarea,
+body.light-mode .select-box {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(51, 163, 180, 0.4);
+  color: #0f172a;
+}
+
+body.light-mode .contact-btn {
+  color: #000;
+}
+
+body.light-mode .info-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.10);
+}
+
+body.light-mode .info-card p {
+  color: #334155;
+}
+
+body.light-mode .closed {
+  color: #dc2626;
+}
+
+body.light-mode .success-overlay {
+  background: rgba(255, 255, 255, 0.94);
+}
+
+body.light-mode .success-box {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  box-shadow:
+    0 0 25px rgba(34, 211, 238, 0.25),
+    0 0 60px rgba(168, 85, 247, 0.18);
+}
+
+body.light-mode .success-check {
+  color: #000;
+}
+
+body.light-mode .success-box p {
+  color: #334155;
+}
+
+body.light-mode .map-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  box-shadow:
+    0 0 25px rgba(34, 211, 238, 0.15),
+    0 0 60px rgba(168, 85, 247, 0.10);
+}
+
+body.light-mode .map-card iframe {
+  filter: grayscale(60%) contrast(1.05) brightness(1.02);
+}
+
+body.light-mode .map-card:hover iframe {
+  filter: grayscale(0%) contrast(1.1) brightness(1);
+}
+
+body.light-mode .select-item {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  color: #0f172a;
+}
+

@@ -1,0 +1,33 @@
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9999;
+
+  /* center content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* default (desktop) */
+.page-loader img {
+  width: 450px;
+  max-width: 90%;
+  height: auto;
+  opacity: 0.85;
+}
+
+/* tablets */
+@media (max-width: 1024px) {
+  .page-loader img {
+    width: 370px;
+  }
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .page-loader img {
+    width: 270px;
+  }
+}

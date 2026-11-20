@@ -1,0 +1,618 @@
+
+
+.services-section {
+  min-height: 100vh;
+  padding: 100px 8%;
+  background: radial-gradient(circle at top, #020617, #000);
+  color: white;
+}
+
+/* Header */
+.services-header {
+  max-width: 750px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.services-header h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  /* text-shadow: 0 0 25px #22d3ee; */
+}
+
+.services-header h1 span {
+  color: #22d3ee;
+}
+
+.services-header p {
+  color: #94a3b8;
+  line-height: 1.8;
+}
+
+/* Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}
+
+/* Card */
+.service-card {
+  background: rgba(2, 6, 23, 0.9);
+  border-radius: 22px;
+  padding: 40px 28px;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  animation: rgbGlow 6s ease-in-out infinite;
+  transition: 0.4s ease;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-14px) scale(1.03);
+  animation: rgbGlow 2.5s ease-in-out infinite;
+}
+
+/* ICON BASE */
+.service-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  position: relative;
+  animation:
+    floatIcon 4s ease-in-out infinite,
+    rgbGlow 5s ease-in-out infinite;
+}
+
+/* Inner glow ring */
+.service-icon::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0.7;
+  animation: spin 6s linear infinite;
+}
+
+/* ICON COLORS */
+.service-icon.ai {
+  color: #22d3ee;
+}
+.service-icon.dev {
+  color: #a855f7;
+}
+.service-icon.cyber {
+  color: #ec4899;
+}
+.service-icon.design {
+  color: #38bdf8;
+}
+.service-icon.cloud {
+  color: #0ea5e9;
+}
+.service-icon.brand {
+  color: #f472b6;
+}
+
+/* Floating animation */
+@keyframes floatIcon {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Rotating ring */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text */
+.service-card h3 {
+  margin-bottom: 12px;
+  color: #22d3ee;
+  letter-spacing: 1.5px;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #cbd5f5;
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .services-section {
+    padding: 80px 6%;
+  }
+}
+
+/* ================= RGB BREATHING GLOW ================= */
+
+@keyframes rgbGlow {
+  0% {
+    box-shadow:
+      0 0 10px #22d3ee,
+      0 0 20px #22d3ee,
+      0 0 40px #22d3ee;
+  }
+  33% {
+    box-shadow:
+      0 0 12px #a855f7,
+      0 0 24px #a855f7,
+      0 0 50px #a855f7;
+  }
+  66% {
+    box-shadow:
+      0 0 12px #ec4899,
+      0 0 24px #ec4899,
+      0 0 50px #ec4899;
+  }
+  100% {
+    box-shadow:
+      0 0 10px #22d3ee,
+      0 0 20px #22d3ee,
+      0 0 40px #22d3ee;
+  }
+}
+
+/* ================= HOLOGRAM ICON ================= */
+
+.service-icon.holo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  position: relative;
+  /* filter: drop-shadow(0 0 15px currentColor); */
+  box-shadow: 0 0 15px currentColor;
+  animation:
+    holoFloat 4s ease-in-out infinite,
+    rgbGlow 6s ease-in-out infinite;
+}
+
+/* Core orb */
+.holo-core {
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, currentColor, transparent 70%);
+  filter: blur(2px);
+  animation: corePulse 2.5s ease-in-out infinite;
+}
+
+/* Energy ring */
+.service-icon.holo::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0.7;
+  animation: holoSpin 6s linear infinite;
+}
+
+/* Hologram scan lines */
+.service-icon.holo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.15) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  mix-blend-mode: screen;
+  animation: scanMove 3s linear infinite;
+  opacity: 0.4;
+}
+
+.ai {
+  color: #22d3ee;
+}
+.dev {
+  color: #a855f7;
+}
+.cyber {
+  color: #ec4899;
+}
+.design {
+  color: #38bdf8;
+}
+.cloud {
+  color: #0ea5e9;
+}
+.brand {
+  color: #f472b6;
+}
+
+@keyframes holoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes holoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes corePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+@keyframes scanMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+
+.service-card:hover .service-icon.holo {
+  filter: drop-shadow(0 0 35px currentColor);
+  transform: scale(1.1);
+}
+
+/* ================= PARTICLE ENERGY ================= */
+
+.energy-particles {
+  position: absolute;
+  inset: -15px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: orbit 10s linear infinite;
+}
+
+.energy-particles span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+  opacity: 0.8;
+}
+
+/* Particle positions */
+.energy-particles span:nth-child(1) {
+  top: 0%;
+  left: 50%;
+  animation: spark 2s infinite;
+}
+.energy-particles span:nth-child(2) {
+  top: 50%;
+  left: 100%;
+  animation: spark 2.5s infinite;
+}
+.energy-particles span:nth-child(3) {
+  top: 100%;
+  left: 50%;
+  animation: spark 3s infinite;
+}
+.energy-particles span:nth-child(4) {
+  top: 50%;
+  left: 0%;
+  animation: spark 2.2s infinite;
+}
+.energy-particles span:nth-child(5) {
+  top: 20%;
+  left: 20%;
+  animation: spark 3.5s infinite;
+}
+.energy-particles span:nth-child(6) {
+  top: 80%;
+  left: 80%;
+  animation: spark 4s infinite;
+}
+
+/* Orbit motion */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Spark pulse */
+@keyframes spark {
+  0%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
+.service-card:hover .energy-particles {
+  animation-duration: 4s;
+}
+
+.service-card:hover .energy-particles span {
+  box-shadow: 0 0 18px currentColor;
+}
+
+.center-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 28px;
+
+  color: currentColor;
+
+  z-index: 10;
+
+  /* ⭐ REMOVE blur-causing filter */
+  /* filter: drop-shadow(0 0 10px currentColor); */
+
+  /* ✅ Use text-shadow instead (keeps icon sharp) */
+  text-shadow:
+    0 0 6px currentColor,
+    0 0 12px currentColor;
+
+  pointer-events: none;
+
+  /* ⭐ force crisp rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================= WHY CHOOSE US ================= */
+
+.why-section {
+  padding: 140px 8% 120px;
+  text-align: center;
+  position: relative;
+}
+
+.why-header h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 14px;
+}
+
+.why-header span {
+  color: #22d3ee;
+  /* text-shadow: 0 0 22px #22d3ee; */
+}
+
+.why-header p {
+  max-width: 700px;
+  margin: auto;
+  color: #b6c3ff;
+  opacity: 0.85;
+}
+
+/* ===== GRID ===== */
+
+.why-grid {
+  margin-top: 90px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* ===== CARD ===== */
+
+.why-card {
+  position: relative;
+  background: rgba(2, 6, 23, 0.9);
+  border-radius: 22px;
+  padding: 38px 28px 34px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 35px rgba(34, 211, 238, 0.22);
+  transition: 0.5s ease;
+  overflow: hidden;
+}
+
+.why-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow:
+    0 0 35px rgba(34, 211, 238, 0.5),
+    0 0 80px rgba(168, 85, 247, 0.35);
+}
+
+/* glowing core */
+
+.why-card h3 {
+  color: #22d3ee;
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  color: #cbd5f5;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* floating energy line */
+
+.why-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(34, 211, 238, 0.12),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: whyScan 5s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes whyPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.6);
+  }
+}
+
+@keyframes whyScan {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1100px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-section {
+    padding: 90px 6% 80px;
+  }
+}
+
+/* ===== ICON CORE ===== */
+
+.why-icon {
+  font-size: 2.4rem;
+  margin-bottom: 18px;
+  color: #22d3ee;
+
+  filter: drop-shadow(0 0 6px #22d3ee)
+    drop-shadow(0 0 18px rgba(34, 211, 238, 0.8))
+    drop-shadow(0 0 40px rgba(168, 85, 247, 0.6));
+
+  animation: iconPulse 2.2s ease-in-out infinite;
+}
+
+/* hover upgrade */
+
+.why-card:hover .why-icon {
+  color: #a855f7;
+  transform: scale(1.2) rotate(4deg);
+  filter: drop-shadow(0 0 10px #a855f7)
+    drop-shadow(0 0 28px rgba(168, 85, 247, 0.9));
+}
+
+/* animation */
+
+@keyframes iconPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.75;
+  }
+}
+
+
+
+.main-service-btn-primary {
+  position: relative;
+
+  padding: 13px 30px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  /* --ascent: #050505;
+  --ascent-2: #050505; */
+  background:
+    linear-gradient(#050505) padding-box,
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #9333ea,
+      #ec4899
+    ) border-box;
+
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    all 0.4s ease;
+
+}
+
+
+body.light-mode .main-service-btn-primary{
+  color: #050505;
+
+  background:
+    linear-gradient(#f5f5f5) padding-box,
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #9333ea,
+      #ec4899
+    ) border-box;
+
+}
+
+.main-service-btn-primary:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 20px rgba(37, 99, 235, 0.25),
+    0 0 30px rgba(236, 72, 153, 0.15);
+}
+
+/* .services-btn {
+  position: absolute;
+  bottom: 0;
+} */

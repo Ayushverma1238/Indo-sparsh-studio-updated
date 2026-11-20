@@ -1,0 +1,41 @@
+/* =====================================================
+   SHARED SCROLL MARQUEE
+   Movement is set from JS (utils/scrollMarquee.js).
+   These rules only lay out the copies and clip them.
+===================================================== */
+
+.sm-viewport {
+  position: relative;
+  overflow: hidden;
+}
+
+.sm-track {
+  display: flex;
+  width: max-content;
+  gap: var(--sm-gap, 40px);
+  will-change: transform;
+}
+
+.sm-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--sm-gap, 40px);
+}
+
+/* Optional soft edges, for marquees that run edge to edge */
+.sm-fade {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}

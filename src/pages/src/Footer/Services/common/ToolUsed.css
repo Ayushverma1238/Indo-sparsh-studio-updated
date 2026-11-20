@@ -1,0 +1,25 @@
+body.light-mode {
+  --adh-text-muted: var(--color-text-muted);
+  --adh-border: var(--color-border);
+}
+
+body.dark-mode {
+  --adh-text-muted: var(--color-text-muted);
+  --adh-border: var(--color-border);
+}
+
+/* ============ Tech marquee ============ */
+.adh-marquee__item {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13px;
+  padding: 10px 18px;
+  border: 1px solid var(--adh-border);
+  border-radius: 999px;
+  color: var(--adh-text-muted);
+  white-space: nowrap;
+}
+
+.adh-marquee__item:hover{
+    border: 1px solid var(--color-text);
+}
+

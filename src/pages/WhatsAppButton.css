@@ -1,0 +1,111 @@
+/* ================= WHATSAPP FLOAT BUTTON ================= */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 26px;
+  left: 26px;
+
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+
+  background: radial-gradient(circle at top, #25d366, #0b5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* ✅ CLICKABLE */
+  cursor: pointer !important;
+  pointer-events: auto !important;
+
+  z-index: 999999;
+
+  box-shadow:
+    0 0 25px rgba(37, 211, 102, 0.8),
+    0 0 60px rgba(37, 211, 102, 0.6);
+
+  animation: waFloat 4s ease-in-out infinite;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  overflow: visible;
+}
+
+/* ensure children never block clicks */
+.whatsapp-float *,
+.whatsapp-float::before,
+.whatsapp-float::after {
+  pointer-events: none;
+}
+
+/* ================= GLOW RING ================= */
+
+.wa-ring {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(37, 211, 102, 0.6);
+  animation: waPulse 2.5s infinite;
+}
+
+/* ================= ICON ================= */
+
+.wa-icon {
+  font-size: 34px;
+  color: #ffffff;
+  z-index: 2;
+
+  filter: drop-shadow(0 0 6px #25d366)
+    drop-shadow(0 0 12px rgba(37, 211, 102, 0.8));
+}
+
+/* ================= HOVER ================= */
+
+.whatsapp-float:hover {
+  transform: scale(1.15);
+  box-shadow:
+    0 0 40px rgba(37, 211, 102, 1),
+    0 0 90px rgba(37, 211, 102, 0.9);
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes waFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes waPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+    bottom: 18px;
+    left: 18px;
+  }
+
+  .wa-icon {
+    font-size: 28px;
+  }
+}

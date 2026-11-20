@@ -1,0 +1,382 @@
+/* ================= PROJECTS WE DISCUSS : EYE-CATCHING GLASS ================= */
+:root {
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Lets the browser animate this custom property for the rotating border */
+@property --pd-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Shared button tokens (other components use these too) */
+body.light-mode {
+  --btn-bg: #fff;
+  --btn-text: #141414;
+  --btn-border: #b1a7a7;
+  --btn-shadow: 0 14px 30px -14px rgba(21, 22, 29, 0.55);
+  --btn-shadow-hover: 0 20px 40px -14px rgba(21, 22, 29, 0.6);
+}
+
+body.dark-mode {
+  --btn-bg: linear-gradient(135deg, #1d1f2e 0%, #11121a 100%);
+  --btn-text: #f3f4f7;
+  --btn-border: rgba(139, 123, 255, 0.5);
+  --btn-shadow: 0 0 0 1px rgba(139, 123, 255, 0.12),
+    0 14px 34px -12px rgba(139, 123, 255, 0.45);
+  --btn-shadow-hover: 0 0 0 1px rgba(139, 123, 255, 0.3),
+    0 20px 44px -12px rgba(139, 123, 255, 0.6);
+}
+
+/* Section: background unchanged in both themes */
+.projects-discuss {
+  position: relative;
+  isolation: isolate;
+  padding: 120px 8% 120px;
+  background: radial-gradient(circle at top, #020617, #000014);
+  color: white;
+  overflow: hidden;
+  perspective: 1200px;
+
+  /* Dark theme tokens (default) */
+  --pd-glass-bg: linear-gradient(145deg, rgba(15, 23, 42, 0.7), rgba(2, 6, 23, 0.5));
+  --pd-glow-a: rgba(34, 211, 238, 0.22);
+  --pd-glow-b: rgba(168, 85, 247, 0.2);
+  --pd-edge-light: rgba(255, 255, 255, 0.16);
+  --pd-heading: #f8fafc;
+  --pd-title-grad: linear-gradient(90deg, #f8fafc, #67e8f9, #c4b5fd, #f8fafc);
+  --pd-text: #cbd5f5;
+  --pd-shine: rgba(255, 255, 255, 0.14);
+  --pd-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.75);
+  --pd-ring-base: rgba(148, 163, 184, 0.22);
+  --pd-orb-opacity: 0.55;
+}
+
+/* Light theme tokens */
+body.light-mode .projects-discuss {
+  --pd-glass-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(241, 245, 249, 0.82));
+  --pd-glow-a: rgba(34, 211, 238, 0.3);
+  --pd-glow-b: rgba(168, 85, 247, 0.26);
+  --pd-edge-light: rgba(255, 255, 255, 1);
+  --pd-heading: #0f172a;
+  --pd-title-grad: linear-gradient(90deg, #0f172a, #0e7490, #7e22ce, #0f172a);
+  --pd-text: #334155;
+  --pd-shine: rgba(34, 211, 238, 0.18);
+  --pd-shadow: 0 30px 60px -24px rgba(2, 6, 23, 0.65);
+  --pd-ring-base: rgba(100, 116, 139, 0.35);
+  --pd-orb-opacity: 0.45;
+}
+
+/* Floating ambient orbs (seen through the frosted card) */
+.projects-discuss::before,
+.projects-discuss::after {
+  content: "";
+  position: absolute;
+  width: clamp(260px, 40vw, 480px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: var(--pd-orb-opacity);
+  pointer-events: none;
+  z-index: 0;
+  animation: pdOrbFloat 16s ease-in-out infinite;
+}
+
+.projects-discuss::before {
+  top: -140px;
+  left: -120px;
+  background: radial-gradient(circle, #22d3ee, transparent 70%);
+}
+
+.projects-discuss::after {
+  bottom: -160px;
+  right: -120px;
+  background: radial-gradient(circle, #a855f7, transparent 70%);
+  animation-delay: -8s;
+}
+
+/* Frosted glass card */
+.pd-cta {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: 800px;
+  margin: auto;
+  padding: 64px 48px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 28px;
+  background:
+    radial-gradient(120% 90% at 0% 0%, var(--pd-glow-a), transparent 55%),
+    radial-gradient(120% 90% at 100% 100%, var(--pd-glow-b), transparent 55%),
+    var(--pd-glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow:
+    var(--pd-shadow),
+    inset 0 1px 0 var(--pd-edge-light),
+    0 0 60px -10px rgba(34, 211, 238, 0.25),
+    0 0 90px -20px rgba(168, 85, 247, 0.25);
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+  animation: pdRise 1s var(--ease) backwards;
+}
+
+.pd-cta:hover {
+  transform: translateY(-6px) rotateX(3deg);
+  box-shadow:
+    var(--pd-shadow),
+    inset 0 1px 0 var(--pd-edge-light),
+    0 0 80px -8px rgba(34, 211, 238, 0.4),
+    0 0 110px -16px rgba(168, 85, 247, 0.4);
+}
+
+/* Rotating glowing border: conic gradient masked down to a thin ring */
+.pd-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--pd-angle),
+    var(--pd-ring-base) 0deg,
+    var(--pd-ring-base) 240deg,
+    #22d3ee 280deg,
+    #a855f7 310deg,
+    #f472b6 335deg,
+    var(--pd-ring-base) 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+  animation: pdBorderSpin 6s linear infinite;
+}
+
+/* Light sweep across the card on hover */
+.pd-cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, var(--pd-shine), transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
+  transition: left 1.2s var(--ease);
+}
+
+.pd-cta:hover::after {
+  left: 130%;
+}
+
+/* Headline with flowing gradient text */
+.pd-cta h2 {
+  position: relative;
+  margin: 0 0 18px;
+  padding-bottom: 22px;
+  font-size: clamp(2rem, 4.4vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: 1.5px;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: var(--pd-title-grad);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: pdTitleFlow 7s ease-in-out infinite alternate;
+}
+
+/* Glowing accent underline */
+.pd-cta h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 64px;
+  height: 3px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #22d3ee, #a855f7);
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.7);
+}
+
+.pd-cta p {
+  max-width: 540px;
+  margin: 0 auto 36px;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--pd-text);
+}
+
+/* Gradient button: flowing colors, pulsing glow, shine sweep */
+.pd-cta .gl-btn--solid {
+  position: relative;
+  overflow: hidden;
+  padding: 16px 46px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 14px;
+  background: linear-gradient(120deg, #22d3ee, #6366f1, #a855f7, #22d3ee);
+  background-size: 300% 100%;
+  color: #020617;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  animation:
+    pdBtnFlow 6s ease-in-out infinite alternate,
+    pdBtnGlow 2.6s ease-in-out infinite;
+  transition: transform 0.4s var(--ease);
+}
+
+.pd-cta .gl-btn--solid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s var(--ease);
+}
+
+.pd-cta .gl-btn--solid:hover::after {
+  left: 130%;
+}
+
+.pd-cta .gl-btn--solid:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+.pd-cta .gl-btn--solid:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.pd-cta .gl-btn--solid:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 4px;
+}
+
+/* Animations */
+@keyframes pdRise {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pdBorderSpin {
+  to {
+    --pd-angle: 360deg;
+  }
+}
+
+@keyframes pdTitleFlow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pdBtnFlow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pdBtnGlow {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      0 10px 24px -8px rgba(34, 211, 238, 0.45);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      0 14px 36px -6px rgba(168, 85, 247, 0.7);
+  }
+}
+
+@keyframes pdOrbFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, -30px) scale(1.1);
+  }
+}
+
+/* Shared button base (used by other components too) */
+.gl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 26px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
+}
+
+.gl-btn:hover {
+  transform: scale(0.9);
+}
+
+.gl-btn--solid {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-color: var(--btn-border);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .projects-discuss {
+    padding: 90px 6% 100px;
+  }
+
+  .projects-discuss::before,
+  .projects-discuss::after {
+    filter: blur(50px);
+  }
+
+  .pd-cta {
+    padding: 44px 22px;
+    border-radius: 24px;
+  }
+
+  .pd-cta .gl-btn--solid {
+    padding: 15px 32px;
+  }
+}
+
+/* Respect users who prefer reduced motion: everything stays still */
+@media (prefers-reduced-motion: reduce) {
+  .projects-discuss::before,
+  .projects-discuss::after,
+  .pd-cta,
+  .pd-cta::before,
+  .pd-cta::after,
+  .pd-cta h2,
+  .pd-cta .gl-btn--solid,
+  .pd-cta .gl-btn--solid::after {
+    animation: none;
+    transition: none;
+  }
+}
